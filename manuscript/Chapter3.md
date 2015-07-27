@@ -1,3 +1,6 @@
+Chapter 3: Fundamental Analysis and the Balance Sheet
+=====================================================
+
 Estimate Trend Yield
 --------------------
 

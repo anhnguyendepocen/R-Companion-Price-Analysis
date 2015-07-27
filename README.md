@@ -1,2 +1,2 @@
 # R-Companion-Price-Analysis
-Companion to *Price Analysis* containing exercises in R.  
+This is a companion to the book, *Price Analysis*, which contains exercises in how to use R for price analysis.  

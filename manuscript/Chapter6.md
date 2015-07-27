@@ -1,3 +1,6 @@
+Chapter 6: Forecasting Prices with Time-Series Econometric Techniques
+=====================================================================
+
 Time Series Basics
 ------------------
 
