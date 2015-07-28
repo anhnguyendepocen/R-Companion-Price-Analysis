@@ -7,7 +7,7 @@ output: md_document
 
 In Chapter 2 of *Price Analysis* we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an api (application program interface) call. Using api's greatly reduce the work and time required to get up and running with an analysis, and more entities provide api access all the time. 
 
-We will keep the introduction here to the bare minimum required to get us up and running and performing price analysis. There are many excellent examples with thorough introductory exercises to R programming on the web. I encourage you to explore them widely.  
+We will keep the introduction here to the bare minimum required to get us up and running and performing price analysis.   
 
 ## Data Import From Files on Your Hard Drive
 
@@ -17,10 +17,21 @@ Navigate to where [CZ2015](https://www.quandl.com/data/CME/CZ2015-Corn-Futures-D
 
 ![Screenshot of CZ2015 page on Quandl.com](images\quandlCZ2015.png)
 
-There 
+There is a button that says 'download' above the chart of the prices. When you click it, you will see file format options. We will work with CSV the most, but will learn how to import Excel files as well. We will not use json or xml file formats in this book.  
 
 ### From Comma Separated Files
 
+Let's begin by loading the price data into R in the CSV format. Click the 'Download' button and then right-click 'CSV'. Choose 'Save Link As'. This gives you the ability to save it directly into your Chapter1 R project folder. If you click 'CSV' instead of right-click, the CSV file will automatically download into your 'Downloads' folder. This is ok, but you will need to go through the extra step of copy and pasting the CSV file into your Chapter1 project folder. 
+
+Now we have the data on our hard drive. Now we will load it into R for analysis!
+~~~~~~
+```{r chunk1, echo=TRUE, eval=TRUE}
+CZ2015 <- read.csv(file="CME-CZ2015.csv")
+
+head(CZ2015)
+tail(CZ2015)
+```
+~~~~~~
 ### From Microsoft Excel
 
 ## Working with API's
