@@ -41,7 +41,7 @@ CSV file into your Chapter1 project folder.
 Now we have the data on our hard drive. Now we will load it into R for
 analysis!
 
-{line-numbers=off}
+{line-numbers=off, title="Import from CSV"}
 
      CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
@@ -74,8 +74,8 @@ analysis!
 
       rnorm(10)
 
-    ##  [1] -0.33022630  0.08441721 -0.07535806  0.95956689  1.17653311
-    ##  [6]  0.41241774  0.19855229 -0.99749677  0.37012324 -0.11758351
+    ##  [1] -1.0561302  0.2480587 -1.2067550  1.9340370 -0.9363626 -2.1840856
+    ##  [7]  0.1907772  0.6246300 -0.4210915 -0.7463286
 
 The head() function displays the first five rows of data and the tail()
 displays the last five rows.
