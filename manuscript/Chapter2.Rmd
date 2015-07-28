@@ -31,8 +31,8 @@ Let's begin by loading the price data into R in the CSV format. Click the 'Downl
 Now we have the data on our hard drive. Now we will load it into R for analysis!
 
 
-
-```{r chunk1,  prompt=TRUE, comment=">", indent="", echo=TRUE, eval=TRUE}
+{line-numbers=off}
+```{r chunk1,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE}
 
  CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
