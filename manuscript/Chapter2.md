@@ -44,11 +44,6 @@ analysis!
     CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
     head(CZ2015)
-    tail(CZ2015)
-
-    CZ2015 <- read.csv(file="CME-CZ2015.csv")
-
-    head(CZ2015)
 
     ##         Date   Open   High    Low   Last Change Settle Volume
     ## 1 2015-07-27 399.00 399.25 383.00 384.00  19.25 383.50 266575
@@ -74,6 +69,13 @@ analysis!
     ## 908 2011-12-16    0   0.0   0   NA     NA 556.50      0             7
     ## 909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
     ## 910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0
+
+The head() function displays the first five rows of data and the tail()
+displays the last five rows.
+
+    plot(CZ2015)
+
+![](Chapter2_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
 ### From Microsoft Excel
 
