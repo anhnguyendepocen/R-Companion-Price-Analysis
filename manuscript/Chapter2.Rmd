@@ -3,6 +3,10 @@ title: "Chapter 2: Getting Started"
 output: md_document
 ---
 
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(fig.path='images/')
+```
+
 # Chapter 2: Getting Started
 
 In Chapter 2 of *Price Analysis* we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an api (application program interface) call. Using api's greatly reduce the work and time required to get up and running with an analysis, and more entities provide api access all the time. 

@@ -75,7 +75,7 @@ displays the last five rows.
 
     plot(CZ2015)
 
-![](Chapter2_files\figure-markdown_strict\unnamed-chunk-1-1.png)
+![](images/unnamed-chunk-1-1.png)
 
 ### From Microsoft Excel
 

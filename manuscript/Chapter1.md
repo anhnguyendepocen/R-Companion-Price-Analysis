@@ -32,6 +32,10 @@ Datatypes
 
 ### Data.frame
 
+#### Basics
+
+#### Subsetting
+
 Setting up a Project
 --------------------
 
