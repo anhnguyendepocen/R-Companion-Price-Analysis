@@ -30,15 +30,17 @@ Let's begin by loading the price data into R in the CSV format. Click the 'Downl
 Now we have the data on our hard drive. Now we will load it into R for analysis!
 
 
->
-```{r chunk1,  prompt=TRUE, echo=TRUE, eval=TRUE}
-CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
-head(CZ2015)
-tail(CZ2015)
+  ```{r chunk1,  prompt=TRUE, comment=">", indent="", echo=TRUE, eval=TRUE}
+  CZ2015 <- read.csv(file="CME-CZ2015.csv")
+
+  head(CZ2015)
+  tail(CZ2015)
+  ```
+
+```{r}
+  rnorm(10)
 ```
-
-
 
 
 The head() function displays the first five rows of data and the tail() displays the last five rows. 
