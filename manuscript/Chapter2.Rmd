@@ -15,7 +15,7 @@ Beginning analysis with R usually involves importing data from our hard drive. F
 
 Navigate to where [CZ2015](https://www.quandl.com/data/CME/CZ2015-Corn-Futures-December-2015-CZ2015) (December 2015 Corn future) is housed.
 
-![Screenshot of CZ2015 page on Quandl.com](images\quandlCZ2015.jpg)
+![Screenshot of CZ2015 page on Quandl.com](images\quandlCZ2015.png)
 
 There 
 
