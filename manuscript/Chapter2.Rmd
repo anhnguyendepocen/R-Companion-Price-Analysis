@@ -1,6 +1,6 @@
 ---
 title: "Chapter 2: Getting Started"
-output: html_document
+output: md_document
 ---
 
 ```{r global options, include=FALSE}
@@ -29,6 +29,7 @@ Let's begin by loading the price data into R in the CSV format. Click the 'Downl
 
 Now we have the data on our hard drive. Now we will load it into R for analysis!
 
+<pre><code>
 
 ```{r chunk1,  results="markup", echo=TRUE, eval=TRUE}
 CZ2015 <- read.csv(file="CME-CZ2015.csv")
@@ -36,6 +37,9 @@ CZ2015 <- read.csv(file="CME-CZ2015.csv")
 head(CZ2015)
 tail(CZ2015)
 ```
+
+</code></pre>
+
 
 The head() function displays the first five rows of data and the tail() displays the last five rows. 
 
