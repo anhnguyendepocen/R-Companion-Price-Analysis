@@ -1,6 +1,6 @@
 ---
 title: "Chapter 2: Getting Started"
-output: md_document
+output: html_document
 ---
 
 ```{r global options, include=FALSE}
@@ -30,7 +30,7 @@ Let's begin by loading the price data into R in the CSV format. Click the 'Downl
 Now we have the data on our hard drive. Now we will load it into R for analysis!
 
 
-```{r chunk1, echo=TRUE, eval=TRUE}
+```{r chunk1,  results="markup", echo=TRUE, eval=TRUE}
 CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
 head(CZ2015)
