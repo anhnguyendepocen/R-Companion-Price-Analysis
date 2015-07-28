@@ -5,6 +5,7 @@ output: md_document
 
 ```{r global options, include=FALSE}
 knitr::opts_chunk$set(fig.path='images/')
+ 
 ```
 
 # Chapter 2: Getting Started
@@ -31,12 +32,13 @@ Now we have the data on our hard drive. Now we will load it into R for analysis!
 
 
 
-  ```{r chunk1,  prompt=TRUE, comment=">", indent="", echo=TRUE, eval=TRUE}
-  CZ2015 <- read.csv(file="CME-CZ2015.csv")
+```{r chunk1,  prompt=TRUE, comment=">", indent="", echo=TRUE, eval=TRUE}
 
-  head(CZ2015)
-  tail(CZ2015)
-  ```
+ CZ2015 <- read.csv(file="CME-CZ2015.csv")
+
+ head(CZ2015)
+ tail(CZ2015)
+```
 
 ```{r}
   rnorm(10)
