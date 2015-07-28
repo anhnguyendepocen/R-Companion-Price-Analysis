@@ -19,7 +19,7 @@ Data Import From Files on Your Hard Drive
 Beginning analysis with R usually involves importing data from our hard
 drive. First we will download some data from [Quandl](Quandl.com).
 
-A> Download Data from Quandl 
+A> ## Download Data from Quandl 
 A> Navigate to where [CZ2015](https://www.quandl.com/data/CME/CZ2015-Corn-Futures-December-2015-CZ2015) is housed. 
 A>
 
