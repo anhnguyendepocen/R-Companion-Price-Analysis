@@ -58,6 +58,12 @@ Now that we have the proper package installed, using read.xlsx() is very similar
 
 ## Working with API's
 
+
+
+% Quandl api: 79SfoMaQc1npRAuq9ExZ
+
+### Quandl's API
+
 ### Yahoo Finance's API
 
 ### USDA API's
