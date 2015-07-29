@@ -44,10 +44,15 @@ the working directory (file on your hard drive) and loads it into the R
 environment as a data.frame. In the "Environment" tab of the upper right
 pane of the RStudio console you should see the variable CZ2015. If you
 hover your mouse over it, RStudio will tell you that it is a
-data.frame-type variable and its size.  
+data.frame-type variable and its size.
 
+<!--html_preserve-->
+> <!--/html_preserve-->
 
-~~~~~~~~
+    # mdchar1 <- as.character('{title="Code Block Title Goes Here"}')
+     #mdchar2 <- as.character('~~~~~~')
+     #mdchar1
+     #mdchar2
      CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
      head(CZ2015)
@@ -77,7 +82,10 @@ data.frame-type variable and its size.
     909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
     910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0
 
-~~~~~~~~
+     #mdchar2
+
+<!--html_preserve-->
+~<sub><sub><sub>~</sub></sub></sub> <!--/html_preserve-->
 
 The head() function displays the first five rows of data and the tail()
 displays the last five rows.
