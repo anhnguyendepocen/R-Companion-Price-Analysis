@@ -47,7 +47,6 @@ hover your mouse over it, RStudio will tell you that it is a
 data.frame-type variable and its size.
 
 {title="Trying for a Box"}
-
 ~~~~~~~~
 
     CZ2015 <- read.csv(file="CME-CZ2015.csv")
