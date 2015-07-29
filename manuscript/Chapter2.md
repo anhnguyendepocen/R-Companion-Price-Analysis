@@ -46,9 +46,9 @@ pane of the RStudio console you should see the variable CZ2015. If you
 hover your mouse over it, RStudio will tell you that it is a
 data.frame-type variable and its size.  
 
-{title="Code Block Title Goes Here"}
-~~~~~~~~     
-    CZ2015 <- read.csv(file="CME-CZ2015.csv")
+
+~~~~~~~~
+     CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
      head(CZ2015)
 
@@ -76,7 +76,8 @@ data.frame-type variable and its size.
     908 2011-12-16    0   0.0   0   NA     NA 556.50      0             7
     909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
     910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0
-~~~~~~~~  
+
+~~~~~~~~
 
 The head() function displays the first five rows of data and the tail()
 displays the last five rows.
