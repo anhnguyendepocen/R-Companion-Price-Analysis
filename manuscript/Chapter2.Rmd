@@ -63,16 +63,31 @@ Now that we have the proper package installed, using `read.xlsx()` is very simil
 \~\~\~\~\~\~\~\~
 ```{r, echo=-1, warning=FALSE, message=FALSE}
  library(xlsx)
+
  CZ2015 <- read.xlsx(file="CME-CZ2015.xls", 1)
+ 
 ```
 \~\~\~\~\~\~\~\~
 
 
 ## Working with API's
 
+When a website has an API set of for thier data warehouse, it is easy to import data into a programming environment with script. This saves a lot of time navigating and clicking through websites. Since we are learning to use R for price analysis, we will definitely want to make use of API calls when we can. We will need to install another package that provides functionality to extract information from webpages. Install the `RCurl` package and load the library by running the following code. 
+
+%% Changed my mind I want to use the Quadle package. 
+
+\~\~\~\~\~\~\~\~
+```{r, eval=FALSE}
+install.packages("RCurl")
+library(RCurl)
+```
+\~\~\~\~\~\~\~\~
+
+In the previous sections we downloaded data from [Quandl.com](https://quandl.com) manually. They provide an API we can use to get their data directly into the R environment. To do this we will make use of the `getURL()` function from the `RCurl` package along with the `read.csv()` function we used earlier. Run the following code to download the December 2015 corn futures from [Quandl.com](https://quandl.com).
 
 
-% Quandl api: 79SfoMaQc1npRAuq9ExZ
+
+
 
 ### Quandl's API
 
