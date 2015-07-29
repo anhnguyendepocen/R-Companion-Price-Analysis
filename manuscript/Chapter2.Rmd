@@ -32,13 +32,14 @@ Now we have the data on our hard drive, and we will load it into R for analysis!
 
 
 {linenos=off}
+\~\~\~\~\~\~\~\~
 ```{r chunk1,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE, collapse=TRUE}
 CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
 head(CZ2015)
 tail(CZ2015)
 ```
- 
+\~\~\~\~\~\~\~\~
 
 
 The head() function displays the first five rows of data and the tail() displays the last five rows. 
