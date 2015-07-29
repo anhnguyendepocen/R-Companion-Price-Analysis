@@ -46,7 +46,9 @@ pane of the RStudio console you should see the variable CZ2015. If you
 hover your mouse over it, RStudio will tell you that it is a
 data.frame-type variable and its size.
 
-{linenos=off} ~~~~~~~~
+{title="Trying for a Box"}
+
+~~~~~~~~
 
     CZ2015 <- read.csv(file="CME-CZ2015.csv")
 

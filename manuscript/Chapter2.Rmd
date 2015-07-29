@@ -31,7 +31,8 @@ Let's begin by loading the price data into R in the CSV format. Click the 'Downl
 Now we have the data on our hard drive, and we will load it into R for analysis! The read.csv() function looks for the file "CME-CZ2015.csv" in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the "Environment" tab of the upper right pane of the RStudio console you should see the variable CZ2015. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size. 
 
 
-{linenos=off}
+{title="Trying for a Box"}
+
 \~\~\~\~\~\~\~\~
 ```{r chunk1,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE, collapse=TRUE}
 CZ2015 <- read.csv(file="CME-CZ2015.csv")
