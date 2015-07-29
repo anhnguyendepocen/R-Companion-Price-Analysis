@@ -38,8 +38,13 @@ will automatically download into your 'Downloads' folder. This is ok,
 but you will need to go through the extra step of copy and pasting the
 CSV file into your Chapter1 project folder.
 
-Now we have the data on our hard drive. Now we will load it into R for
-analysis!
+Now we have the data on our hard drive, and we will load it into R for
+analysis! The read.csv() function looks for the file "CME-CZ2015.csv" in
+the working directory (file on your hard drive) and loads it into the R
+environment as a data.frame. In the "Environment" tab of the upper right
+pane of the RStudio console you should see the variable CZ2015. If you
+hover your mouse over it, RStudio will tell you that it is a
+data.frame-type variable and its size.
 
      CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
@@ -70,17 +75,33 @@ analysis!
     909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
     910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0
 
-G> Trying to use a box 
-G> 
-
 The head() function displays the first five rows of data and the tail()
 displays the last five rows.
 
-    plot(CZ2015$Dat, CZ2015$Last)
-
-![](images/unnamed-chunk-1-1.png)
-
 ### From Microsoft Excel
+
+It is best practice to always download your data as CSV files for the
+most flexibility possible. However, R does have the ability to read
+Microsoft Excel files, and it works very much like reading in CSV files.
+The function we need to do this does not come in the base R package that
+gets loaded when you install R. We need to *install* the package "xlsx"
+and load it into our *library*. Run the two lines of code below and we
+will be ready to use the `{r, eval=FALSE} read.xlsx()` function from
+this package to load our .xls data file.
+
+    install.packages("xlsx")
+    library(xlsx)
+
+Now that we have the proper package installed, using
+`{r, eval=FALSE} read.xlsx()` is very similar to the
+`{r, eval=FALSE} read.csv()` function we used before. The only addition
+is that since excel files can have multiple worksheets, we need to tell
+the function which worksheet to import. In our case the data file is
+simple with only one worksheet, so we just put a 1 in the second
+argument of the function.
+
+     library(xlsx)
+     CZ2015 <- read.xlsx(file="CME-CZ2015.xls", 1)
 
 Working with API's
 ------------------
@@ -91,3 +112,7 @@ Working with API's
 
 Graphing Basics
 ---------------
+
+    plot(CZ2015$Dat, CZ2015$Last)
+
+![](images/unnamed-chunk-3-1.png)

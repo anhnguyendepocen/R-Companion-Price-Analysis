@@ -51,4 +51,7 @@ Other Resources for Getting Started with R
 
 1.  [R
     Tutorial](http://www.cyclismo.org/tutorial/R/input.html#reading-a-csv-file)
-    by Kelly Black, Department of Math at University of Georgia
+    by Kelly Black, Department of Math at University of Georgia.
+2.  [R and Reproducable Research
+    Course](http://eriqande.github.io/rep-res-web/syllabus.html) by Eric
+    Anderson, NOAA.
