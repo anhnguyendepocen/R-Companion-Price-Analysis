@@ -28,13 +28,12 @@ There is a button that says 'download' above the chart of the prices. When you c
 
 Let's begin by loading the price data into R in the CSV format. Click the 'Download' button and then right-click 'CSV'. Choose 'Save Link As'. This gives you the ability to save it directly into your Chapter1 R project folder. If you click 'CSV' instead of right-click, the CSV file will automatically download into your 'Downloads' folder. This is ok, but you will need to go through the extra step of copy and pasting the CSV file into your Chapter1 project folder. 
 
-Now we have the data on our hard drive, and we will load it into R for analysis! The read.csv() function looks for the file "CME-CZ2015.csv" in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the "Environment" tab of the upper right pane of the RStudio console you should see the variable CZ2015. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size. 
+Now we have the data on our hard drive, and we will load it into R for analysis! The `read.csv()` function looks for the file `CME-CZ2015.csv` in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the "Environment" tab of the upper right pane of the RStudio console you should see the variable `CZ2015`. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size. 
 
 
-{title="Trying for a Box"}
-
+{title="", linenos=off} \
 \~\~\~\~\~\~\~\~
-```{r chunk1,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE, collapse=TRUE}
+```{r}
 CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
 head(CZ2015)
@@ -43,23 +42,31 @@ tail(CZ2015)
 \~\~\~\~\~\~\~\~
 
 
-The head() function displays the first five rows of data and the tail() displays the last five rows. 
+The `head()` function displays the first five rows of data and the `tail()` displays the last five rows. 
 
 ### From Microsoft Excel
 
-It is best practice to always download your data as CSV files for the most flexibility possible. However, R does have the ability to read Microsoft Excel files, and it works very much like reading in CSV files. The function we need to do this does not come in the base R package that gets loaded when you install R. We need to *install* the package "xlsx" and load it into our *library*. Run the two lines of code below and we will be ready to use the ```{r, eval=FALSE} read.xlsx()``` function from this package to load our .xls data file.  
+It is best practice to always download your data as CSV files for the most flexibility possible. However, R does have the ability to read Microsoft Excel files, and it works very much like reading in CSV files. The function we need to do this does not come in the base R package that gets loaded when you install R. We need to *install* the package "xlsx" and load it into our *library*. Run the two lines of code below and we will be ready to use the `read.xlsx()` function from this package to load our `.xls` data file.  
 
-```{r,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=FALSE}
+{title="", linenos=off} \
+\~\~\~\~\~\~\~\~
+```{r, eval=FALSE}
 install.packages("xlsx")
 library(xlsx)
 ```
+\~\~\~\~\~\~\~\~
 
-Now that we have the proper package installed, using read.xlsx() is very similar to the read.csv() function we used before. The only addition is that since excel files can have multiple worksheets, we need to tell the function which worksheet to import. In our case the data file is simple with only one worksheet, so we just put a 1 in the second argument of the function. 
 
-```{r,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
+Now that we have the proper package installed, using `read.xlsx()` is very similar to the `read.csv()` function we used before. The only addition is that since excel files can have multiple worksheets, we need to tell the function which worksheet to import. In our case the data file is simple with only one worksheet, so we just put a 1 in the second argument of the function. 
+
+{title="", linenos=off} \
+\~\~\~\~\~\~\~\~
+```{r, echo=-1, warning=FALSE, message=FALSE}
  library(xlsx)
  CZ2015 <- read.xlsx(file="CME-CZ2015.xls", 1)
 ```
+\~\~\~\~\~\~\~\~
+
 
 ## Working with API's
 
@@ -75,7 +82,11 @@ Now that we have the proper package installed, using read.xlsx() is very similar
 
 ## Graphing Basics
 
+{title="", linenos=off} \
+\~\~\~\~\~\~\~\~
 ```{r, echo=TRUE, eval=TRUE}
 plot(CZ2015$Dat, CZ2015$Last)
 
 ```
+
+\~\~\~\~\~\~\~\~
