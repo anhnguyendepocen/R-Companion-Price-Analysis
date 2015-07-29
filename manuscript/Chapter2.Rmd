@@ -29,7 +29,8 @@ There is a button that says 'download' above the chart of the prices. When you c
 Let's begin by loading the price data into R in the CSV format. Click the 'Download' button and then right-click 'CSV'. Choose 'Save Link As'. This gives you the ability to save it directly into your Chapter1 R project folder. If you click 'CSV' instead of right-click, the CSV file will automatically download into your 'Downloads' folder. This is ok, but you will need to go through the extra step of copy and pasting the CSV file into your Chapter1 project folder. 
 
 Now we have the data on our hard drive, and we will load it into R for analysis! The read.csv() function looks for the file "CME-CZ2015.csv" in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the "Environment" tab of the upper right pane of the RStudio console you should see the variable CZ2015. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size.   
-
+{title="Code Block Title Goes Here"}
+~~~~~~~~
 ```{r chunk1,  prompt=FALSE, comment="", indent="", echo=TRUE, eval=TRUE}
 
  CZ2015 <- read.csv(file="CME-CZ2015.csv")
@@ -37,6 +38,7 @@ Now we have the data on our hard drive, and we will load it into R for analysis!
  head(CZ2015)
  tail(CZ2015)
 ```
+~~~~~~~~
 
 The head() function displays the first five rows of data and the tail() displays the last five rows. 
 

@@ -44,9 +44,11 @@ the working directory (file on your hard drive) and loads it into the R
 environment as a data.frame. In the "Environment" tab of the upper right
 pane of the RStudio console you should see the variable CZ2015. If you
 hover your mouse over it, RStudio will tell you that it is a
-data.frame-type variable and its size.
+data.frame-type variable and its size.  
 
-     CZ2015 <- read.csv(file="CME-CZ2015.csv")
+{title="Code Block Title Goes Here"}
+~~~~~~~~     
+    CZ2015 <- read.csv(file="CME-CZ2015.csv")
 
      head(CZ2015)
 
@@ -74,6 +76,7 @@ data.frame-type variable and its size.
     908 2011-12-16    0   0.0   0   NA     NA 556.50      0             7
     909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
     910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0
+~~~~~~~~  
 
 The head() function displays the first five rows of data and the tail()
 displays the last five rows.
@@ -92,19 +95,22 @@ this package to load our .xls data file.
     install.packages("xlsx")
     library(xlsx)
 
-Now that we have the proper package installed, using
-`{r, eval=FALSE} read.xlsx()` is very similar to the
-`{r, eval=FALSE} read.csv()` function we used before. The only addition
-is that since excel files can have multiple worksheets, we need to tell
-the function which worksheet to import. In our case the data file is
-simple with only one worksheet, so we just put a 1 in the second
-argument of the function.
+Now that we have the proper package installed, using read.xlsx() is very
+similar to the read.csv() function we used before. The only addition is
+that since excel files can have multiple worksheets, we need to tell the
+function which worksheet to import. In our case the data file is simple
+with only one worksheet, so we just put a 1 in the second argument of
+the function.
 
      library(xlsx)
      CZ2015 <- read.xlsx(file="CME-CZ2015.xls", 1)
 
 Working with API's
 ------------------
+
+% Quandl api: 79SfoMaQc1npRAuq9ExZ
+
+### Quandl's API
 
 ### Yahoo Finance's API
 
