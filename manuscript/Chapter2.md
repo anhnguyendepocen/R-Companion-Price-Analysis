@@ -168,6 +168,42 @@ to download the December 2015 corn futures from
 
 ~~~~~~~~
 
+Note that this is the same data we manually downloaded before. To
+download a different dataset, you just need to adjust the url in the
+`getURL()` function to point to the right dataset. Note the last two
+components of the url, `CME` and `CZ2015.csv` match the "Quandl Code" in
+the top right corner of [Quandl.com](https://quandl.com).
+
+For example, if you search on the [Quandl.com](https://quandl.com)
+webpage for `CME/SX2015` you can find the November 2015 CME soybeans
+futures contract and see that the "Quandl Code" for `SX2015` is
+`CME/SX2015`. Now if we ajust our API call above to point to November
+2015 soybeans, we will have that data as well.
+
+~~~~~~~~
+
+    SX2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/SX2015.csv")
+    SX2015 <- read.csv(text = SX2015)
+
+    head(SX2015)
+
+    ##         Date    Open    High    Low   Last Change Settle Volume
+    ## 1 2015-07-29  947.00  954.75 940.75 943.50   1.50 943.25  98618
+    ## 2 2015-07-28  935.50  948.75 935.00 946.00  11.50 944.75 110262
+    ## 3 2015-07-27  960.00  960.00 931.75 935.00  31.75 933.25 148324
+    ## 4 2015-07-24  980.25  982.25 963.25 968.00  15.50 965.00 101534
+    ## 5 2015-07-23  996.50 1002.00 977.00 979.50  15.00 980.50 125591
+    ## 6 2015-07-22 1004.50 1008.00 992.75 997.25   9.25 995.50 102543
+    ##   Open.Interest
+    ## 1        339565
+    ## 2        346137
+    ## 3        351599
+    ## 4        355249
+    ## 5        361490
+    ## 6        360996
+
+~~~~~~~~
+
 ### Yahoo Finance's API
 
 ### USDA API's
@@ -180,6 +216,6 @@ Graphing Basics
 
     plot(CZ2015$Dat, CZ2015$Last)
 
-![](images/unnamed-chunk-6-1.png)
+![](images/unnamed-chunk-7-1.png)
 
 ~~~~~~~~
