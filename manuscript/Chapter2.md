@@ -119,9 +119,54 @@ argument of the function.
 Working with API's
 ------------------
 
-% Quandl api: 79SfoMaQc1npRAuq9ExZ
+When a website has an API set of for thier data warehouse, it is easy to
+import data into a programming environment with script. This saves a lot
+of time navigating and clicking through websites. Since we are learning
+to use R for price analysis, we will definitely want to make use of API
+calls when we can. We will need to install another package that provides
+functionality to extract information from webpages. Install the `RCurl`
+package and load the library by running the following code.
+
+~~~~~~~~
+
+    install.packages("RCurl")
+    library(RCurl)
+
+~~~~~~~~
 
 ### Quandl's API
+
+In the previous sections we downloaded data from
+[Quandl.com](https://quandl.com) manually. They provide an API we can
+use to get their data directly into the R environment. To do this we
+will make use of the `getURL()` function from the `RCurl` package along
+with the `read.csv()` function we used earlier. Run the following code
+to download the December 2015 corn futures from
+[Quandl.com](https://quandl.com).
+
+~~~~~~~~
+
+    CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+    CZ2015 <- read.csv(text = CZ2015)
+
+    head(CZ2015)
+
+    ##         Date   Open   High    Low   Last Change Settle Volume
+    ## 1 2015-07-29 387.75 388.00 377.25 377.50   7.25 378.25 144952
+    ## 2 2015-07-28 383.75 386.25 380.25 386.00   2.00 385.50 160938
+    ## 3 2015-07-27 399.00 399.25 383.00 384.00  19.25 383.50 266575
+    ## 4 2015-07-24 413.75 413.75 402.00 402.75  11.00 402.75 135131
+    ## 5 2015-07-23 413.75 415.50 408.50 413.25   0.25 413.75 127893
+    ## 6 2015-07-22 418.25 418.25 410.25 413.25   4.00 413.50 134747
+    ##   Open.Interest
+    ## 1        573381
+    ## 2        577113
+    ## 3        568270
+    ## 4        568386
+    ## 5        574043
+    ## 6        572208
+
+~~~~~~~~
 
 ### Yahoo Finance's API
 
@@ -135,6 +180,6 @@ Graphing Basics
 
     plot(CZ2015$Dat, CZ2015$Last)
 
-![](images/unnamed-chunk-4-1.png)
+![](images/unnamed-chunk-6-1.png)
 
 ~~~~~~~~
