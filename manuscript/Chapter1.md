@@ -75,7 +75,13 @@ the United States, you are not likely to notice a difference.
 
 When you click a mirror you will see a screen like the following:
 
-![Screenshot of R Download Links](images\rdownload.jpf)
+![Screenshot of R Download Links](images\rdownload.jpg)
+
+Click the link for your appropriate operating system, and click "base"
+on the next screen. Finally, if you are running windows you will see the
+following screen:
+
+![Screenshot of Windows .exe Download Links](images\windowsexe.jpg)
 
 Download RStudio
 ----------------
