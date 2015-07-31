@@ -1,5 +1,7 @@
 {frontmatter}
 
+Preface.md
+
 {mainmatter}
 
 Chapter1.md
@@ -9,4 +11,3 @@ Chapter4.md
 Chapter5.md
 Chapter6.md
 
-Chapter2.html

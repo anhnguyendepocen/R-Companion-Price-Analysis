@@ -130,21 +130,6 @@ head(WZ2015)
 ```
 \~\~\~\~\~\~\~\~
 
-### Yahoo Finance's API
-
-Yahoo finance has similar funcionality and is an extremely popular source of financial information. To get December 2015 corn futures from Yahoo fiance, use the following URL:
-
-\~\~\~\~\~\~\~\~
-```{r, echo=-1, warning=FALSE, message=FALSE}
- library(RCurl)
-
-CZ2015 <- getURL("http://ichart.yahoo.com/table.csv?s=cz15.cbt")
-CZ2015 <- read.csv(text = CZ2015)
-
-head(CZ2015)
-
-```
-\~\~\~\~\~\~\~\~
 
 ### USDA API's
 
