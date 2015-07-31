@@ -112,10 +112,80 @@ data or variables have been saved into the environment. Since we have
 not done anything, this is empty. In history tab, a record of every
 command given in the consule is kept.
 
+The lower right hand corner holds several tabs: *Files*, *Plots*,
+*Packages*, *Help*, and *Viewer*. More on these things later.
+
 ![Screenshot of RStudio](images\rstudio.png)
+
+The power of R, is not in the line by line excecution of commands, it is
+in writing scripts were commands can be stored and reused. In the upper
+left hand corner of RStudio, is an icon just below the *File* menu.
+Clicking it reveals a menu to open different kinds of script templates.
+Click it and choose *R Script*. The R script will open in the RStudio
+window and now there are four panes open. Let's assign the value `2` to
+a variable called `x` and the value `3` to a variable called `y`. Then
+we will add them together and store the result as `z`. This is done by
+using the characters `<-` together to assign the values to the variable
+names. Type the following into the R script.
+
+~~~~~~~~
+
+    x <- 2
+    y <- 3
+    z <- x+y
+    z
+
+    ## [1] 5
+
+~~~~~~~~
+
+In this book, notice that output from R is preceded by '\#\#'. The
+hashtag symbol indicates comments to R, so anything to the right of a
+comment will not be evaluated. This facilitates copy and pasting from
+this document into the R console, since only the intended input will be
+evaluated.
 
 Basic Calculations
 ------------------
+
+In the Console type the following to get aquanted with performing
+arithmetic in R.
+
+~~~~~~~~
+
+    2+2
+
+    ## [1] 4
+
+    6*7
+
+    ## [1] 42
+
+    12/4
+
+    ## [1] 3
+
+    5^2
+
+    ## [1] 25
+
+    sqrt(2)
+
+    ## [1] 1.414214
+
+    log(100)
+
+    ## [1] 4.60517
+
+    exp(4.60517)
+
+    ## [1] 99.99998
+
+    exp(log(100))
+
+    ## [1] 100
+
+~~~~~~~~
 
 Datatypes
 ---------
