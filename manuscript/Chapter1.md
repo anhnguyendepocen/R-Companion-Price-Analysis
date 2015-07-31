@@ -218,7 +218,8 @@ and *Character* variables must be character strings like
 A vector is a datatype that is a sequence of elements of the same type
 (enumerated above).
 
-A vector of numeric elements ~~~~~~~~
+A vector of numeric elements  
+~~~~~~~~
 
     x <- c(2.3, 4, 6, -10)
 
@@ -227,13 +228,15 @@ A vector of numeric elements ~~~~~~~~
 The function, `c()` is the concatenate function. It just takes the
 elements between the comma's and puts them together in one matrix.
 
-A vector of character elements ~~~~~~~~
+A vector of character elements  
+~~~~~~~~
 
     y <- c("Hello", "My", "Name", "Is")
 
 ~~~~~~~~
 
-A vector of logical elements ~~~~~~~~
+A vector of logical elements  
+~~~~~~~~
 
     z <- c(FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE)
 
@@ -428,7 +431,7 @@ containing observation identifiers.
 
 ~~~~~~~~
 
-#### Subsetting
+### Subsetting
 
 There are many ways to slice and dice data frames. We will just
 introduce a couple of the most common here. First, if your data frame

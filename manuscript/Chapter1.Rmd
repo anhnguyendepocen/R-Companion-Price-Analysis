@@ -119,7 +119,7 @@ The first four are pretty straightforward. The *Numeric* datatype is for floatin
 
 A vector is a datatype that is a sequence of elements of the same type (enumerated above). 
 
-A vector of numeric elements
+A vector of numeric elements \
 \~\~\~\~\~\~\~\~
 ```{r}
 
@@ -130,7 +130,7 @@ x <- c(2.3, 4, 6, -10)
 
 The function, `c()` is the concatenate function. It just takes the elements between the comma's and puts them together in one matrix.
 
-A vector of character elements
+A vector of character elements \
 \~\~\~\~\~\~\~\~
 ```{r}
 y <- c("Hello", "My", "Name", "Is")
@@ -138,7 +138,7 @@ y <- c("Hello", "My", "Name", "Is")
 ```
 \~\~\~\~\~\~\~\~
 
-A vector of logical elements
+A vector of logical elements \
 \~\~\~\~\~\~\~\~
 ```{r}
 z <- c(FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, TRUE)
@@ -239,7 +239,7 @@ DATA
 ```
 \~\~\~\~\~\~\~\~
 
-#### Subsetting
+### Subsetting
 
 There are many ways to slice and dice data frames. We will just introduce a couple of the most common here. First, if your data frame has column names you can subset off just one column of the data set by, 
 
