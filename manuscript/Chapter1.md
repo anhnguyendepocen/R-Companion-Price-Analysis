@@ -1,6 +1,42 @@
 Chapter 1: Getting Started with R and RStudio
 =============================================
 
+In this chapter we will walk through a short introduction to R and
+RStudio. There are many free and comprehensive tutorials available on
+the web, so our focus here will be to introduce only the concepts and
+functionality that we need to get started with price analysis as quickly
+as possible. Readers who come to this book because they want to do price
+analysis professionally using R will probably want to go back and learn
+R in a more comprehensive way after they have finished *Commodity Price
+Analysis* and the *R Companion*. At the end of this chapter I list some
+excellent tutorials available for free on the web, and there are many
+more not listed here.
+
+Background
+----------
+
+For history on the development of R,
+[Wikipedia](https://en.wikipedia.org/wiki/R_(programming_language)) is
+probably the best souce.
+
+| R is a programming language and software environment for statistical
+computing and graphics. The R language is widely used among |
+statisticians and data miners for developing statistical software and
+data analysis. ... R is an implementation of the S programming |
+language combined with lexical scoping semantics inspired by Scheme. S
+was created by John Chambers while at Bell Labs. There are some |
+important differences, but much of the code written for S runs
+unaltered. R was created by Ross Ihaka and Robert Gentleman[9] at th |
+University of Auckland, New Zealand, and is currently developed by the R
+Development Core Team, of which Chambers is a member. R is | named
+partly after the first names of the first two R authors and partly as a
+play on the name of S. R is a GNU project. The source | code for the R
+software environment is written primarily in C, Fortran, and R.[13] R is
+freely available under the GNU General Public | License, and
+pre-compiled binary versions are provided for various operating systems.
+R uses a command line interface; there are also | several graphical
+front-ends for it.
+
 Download R
 ----------
 
@@ -45,6 +81,9 @@ track of what file directory R is pointing to. Then you will save data,
 figures, or images in unexpected locations. To get used to working with
 different projects, we will create a new project for each chapter of
 this book.
+
+Install and Load a Package into the Library
+-------------------------------------------
 
 Other Resources for Getting Started with R
 ------------------------------------------
