@@ -83,8 +83,22 @@ following screen:
 
 ![Screenshot of Windows .exe Download Links](images\windowsexe.jpg)
 
+Click the *Download R 3.2.1 for Windows* link and run the installation
+file. Note that the release number may be different since new releases
+of the software periodically come out. Now you have R intalled! Now we
+will install RStudio.
+
 Download RStudio
 ----------------
+
+Downloading RStudio is a bit easier. Go to
+[<https://www.rstudio.com/products/rstudio/download/>](https://www.rstudio.com/products/rstudio/download/)
+and the download links are on one page for all supported operating
+systems. Click your operating system and run the installation file.
+
+![Screenshot of RStudio Download Links](images\downloadrstudio.jpg)
+
+Congratulations, you now have R and RStudio installed!
 
 Working with RStudio
 --------------------
