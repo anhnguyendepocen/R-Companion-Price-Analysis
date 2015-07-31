@@ -100,10 +100,19 @@ systems. Click your operating system and run the installation file.
 
 Congratulations, you now have R and RStudio installed!
 
-Working with RStudio
---------------------
+Orienation to the RStudio IDE
+-----------------------------
 
-### Orienation to the RStudio IDE
+Now we will get aquainted with the RStudio IDE. First open RStudio. You
+will see the main window pane divided into three sections. The large
+pane on the left is called the *Console*. It is where commands can be
+executed within R. In the upper right corner is a pane with
+*Environment* and *History* tabs. The environment will show you what
+data or variables have been saved into the environment. Since we have
+not done anything, this is empty. In history tab, a record of every
+command given in the consule is kept.
+
+![Screenshot of RStudio](images\rstudio.png)
 
 Basic Calculations
 ------------------
