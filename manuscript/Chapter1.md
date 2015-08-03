@@ -527,7 +527,7 @@ Now try the code from above.
 
     qplot(DATA$Height)
 
-![](images/unnamed-chunk-19-1.png)
+![](images\unnamed-chunk-19-1.png)
 
 ~~~~~~~~
 
