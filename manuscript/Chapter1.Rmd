@@ -296,7 +296,7 @@ DATA[3,]
 Base R comes with a lot of functionality for statistical analysis, but the beauty of R lies in the packages contributed by the open source community. To see what happens if you try to use a function contained in a package you have not yet installed, 
 
 \~\~\~\~\~\~\~\~
-```{r, eval=FALSE, messages=TRUE}
+```{r, eval=FALSE, message=TRUE}
 
 qplot(DATA$Height)
 
@@ -323,14 +323,15 @@ library(ggplot2)
 Now try the code from above.
 
 
-\~\~\~\~\~\~\~\~
-```{r, echo=-1}
+
+```{r, echo=-1, warning=FALSE}
 library(ggplot2)
 qplot(DATA$Height)
 
 ```
 
-\~\~\~\~\~\~\~\~ 
+
+
 
 Now we were able to make a frequency plot for height! It shows how many obervations at each height there are in the data set. 
 

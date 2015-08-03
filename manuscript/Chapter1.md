@@ -521,15 +521,9 @@ methods.
 
 Now try the code from above.
 
-~~~~~~~~
-
-    ## Warning: package 'ggplot2' was built under R version 3.2.1
-
     qplot(DATA$Height)
 
-![](images\unnamed-chunk-19-1.png)
-
-~~~~~~~~
+![](images/unnamed-chunk-19-1.png)
 
 Now we were able to make a frequency plot for height! It shows how many
 obervations at each height there are in the data set.
