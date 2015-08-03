@@ -322,7 +322,15 @@ library(ggplot2)
 
 Now try the code from above.
 
+\~\~\~\~\~\~\~\~
+```{r, echo=-1, warning=FALSE, eval=FALSE}
 
+library(ggplot2)
+qplot(DATA$Height)
+
+
+```
+\~\~\~\~\~\~\~\~
 
 ```{r, echo=-1, warning=FALSE}
 library(ggplot2)

@@ -135,11 +135,18 @@ head(WZ2015)
 
 ## Graphing Basics
 
-{title="", linenos=off} \
+
 \~\~\~\~\~\~\~\~
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=FALSE}
+
 plot(CZ2015$Dat, CZ2015$Last)
 
 ```
 
 \~\~\~\~\~\~\~\~
+
+```{r, echo=TRUE, eval=TRUE}
+
+plot(CZ2015$Dat, CZ2015$Last)
+
+```
