@@ -3,6 +3,12 @@ title: "Chapter 1: Introduction: Getting Started with R and RStudio"
 output: md_document
 ---
 
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(fig.path='images/')
+
+```
+
+
 # Chapter 1: Getting Started with R and RStudio
 
 In this chapter we will walk through a short introduction to R and RStudio. There are many free and comprehensive tutorials available on the web, so our focus here will be to introduce only the concepts and functionality that we need to get started with price analysis as quickly as possible. Readers who come to this book because they want to do price analysis professionally using R will probably want to go back and learn R in a more comprehensive way after they have finished *Commodity Price Analysis* and the *R Companion*. At the end of this chapter I list some excellent tutorials available for free on the web, and there are many more not listed here. 
@@ -290,7 +296,7 @@ DATA[3,]
 Base R comes with a lot of functionality for statistical analysis, but the beauty of R lies in the packages contributed by the open source community. To see what happens if you try to use a function contained in a package you have not yet installed, 
 
 \~\~\~\~\~\~\~\~
-```{r, eval=FALSE}
+```{r, eval=FALSE, messages=TRUE}
 
 qplot(DATA$Height)
 
@@ -303,6 +309,7 @@ Anytime you get this error message you know you need to install the proper packa
 
 2. Execute the following code:
 
+\~\~\~\~\~\~\~\~
 ```{r, eval=FALSE}
 
 install.packages("ggplot2")
@@ -310,6 +317,8 @@ library(ggplot2)
 
 
 ```
+\~\~\~\~\~\~\~\~
+
 
 Now try the code from above.
 
