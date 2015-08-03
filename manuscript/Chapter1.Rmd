@@ -332,7 +332,7 @@ qplot(DATA$Height)
 ```
 \~\~\~\~\~\~\~\~
 
-```{r, echo=-1, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 library(ggplot2)
 qplot(DATA$Height)
 

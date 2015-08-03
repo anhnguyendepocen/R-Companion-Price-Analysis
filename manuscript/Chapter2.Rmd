@@ -133,7 +133,28 @@ head(WZ2015)
 
 ### USDA API's
 
+Some of the Services within the USDA provide API access to their datasets. The URL for *Corn Ave Prices Received* is not as simple as the Quandl API above. [^documentation] 
+
+[^documentation]: Documentation for the USDA NASS API can be found http://quickstats.nass.usda.gov/api. At this point, do not worry about understanding how to make sense of the documentation. This is simply a reference for your possible future use. I will provide all the correct URLs in the text. 
+
+For the USDA API's you need to request and authentication code. This allows the USDA to keep track of who is accessing the data and make protect against attacks on the data servers. To request an API, click *obtain an API key* on the [http://quickstats.nass.usda.gov/api](http://quickstats.nass.usda.gov/api). Then enter the requested information. You will receive an email with the API key. The code below will download the *Average Prices Recieved by Farmers* for *Corn* in *Iowa* from *1970* to the present.   
+
+\~\~\~\~\~\~\~\~
+```{r, echo=-1, warning=FALSE, message=FALSE}
+library(RCurl)
+IAPrice <- getURL("http://quickstats.nass.usda.gov/api/api_GET/?key=6E3544A2-95E5-3916-ACA4-8AAE9CA28130&commodity_desc=CORN&year__GE=1980&state_alpha=IA&format=CSV&statisticcat_desc=PRICE%20RECEIVED")
+IAPrice <- read.csv(text = IAPrice)
+
+head(IAPrice, 10)
+
+```
+\~\~\~\~\~\~\~\~
+
+Click on the *Environment* tab in RStudio and click `IAPrice` in the *Data* section. This will open up the data in RStudio's data viewer. This is not quite as functional as Microsoft Excel, but it is handy nonetheless. 
+
+
 ## Graphing Basics
+
 
 
 \~\~\~\~\~\~\~\~

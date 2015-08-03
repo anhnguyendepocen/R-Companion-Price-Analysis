@@ -528,8 +528,6 @@ Now try the code from above.
 
 ~~~~~~~~
 
-    qplot(DATA$Height)
-
 ![](images/unnamed-chunk-20-1.png)
 
 Now we were able to make a frequency plot for height! It shows how many

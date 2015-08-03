@@ -219,14 +219,148 @@ futures.
 
 ### USDA API's
 
+Some of the Services within the USDA provide API access to their
+datasets. The URL for *Corn Ave Prices Received* is not as simple as the
+Quandl API above. [1]
+
+For the USDA API's you need to request and authentication code. This
+allows the USDA to keep track of who is accessing the data and make
+protect against attacks on the data servers. To request an API, click
+*obtain an API key* on the
+[<http://quickstats.nass.usda.gov/api>](http://quickstats.nass.usda.gov/api).
+Then enter the requested information. You will receive an email with the
+API key. The code below will download the *Average Prices Recieved by
+Farmers* for *Corn* in *Iowa* from *1970* to the present.
+
+~~~~~~~~
+
+    IAPrice <- getURL("http://quickstats.nass.usda.gov/api/api_GET/?key=6E3544A2-95E5-3916-ACA4-8AAE9CA28130&commodity_desc=CORN&year__GE=1980&state_alpha=IA&format=CSV&statisticcat_desc=PRICE%20RECEIVED")
+    IAPrice <- read.csv(text = IAPrice)
+
+    head(IAPrice, 10)
+
+    ##    source_desc sector_desc  group_desc commodity_desc  class_desc
+    ## 1       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 2       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 3       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 4       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 5       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 6       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 7       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 8       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 9       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ## 10      SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+    ##         prodn_practice_desc util_practice_desc statisticcat_desc unit_desc
+    ## 1  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 2  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 3  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 4  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 5  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 6  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 7  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 8  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 9  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ## 10 ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+    ##                                          short_desc domain_desc
+    ## 1  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 2  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 3  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 4  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 5  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 6  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 7  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 8  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 9  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ## 10 CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+    ##    domaincat_desc agg_level_desc state_ansi state_fips_code state_alpha
+    ## 1   NOT SPECIFIED          STATE         19              19          IA
+    ## 2   NOT SPECIFIED          STATE         19              19          IA
+    ## 3   NOT SPECIFIED          STATE         19              19          IA
+    ## 4   NOT SPECIFIED          STATE         19              19          IA
+    ## 5   NOT SPECIFIED          STATE         19              19          IA
+    ## 6   NOT SPECIFIED          STATE         19              19          IA
+    ## 7   NOT SPECIFIED          STATE         19              19          IA
+    ## 8   NOT SPECIFIED          STATE         19              19          IA
+    ## 9   NOT SPECIFIED          STATE         19              19          IA
+    ## 10  NOT SPECIFIED          STATE         19              19          IA
+    ##    state_name asd_code asd_desc county_ansi county_code county_name
+    ## 1        IOWA       NA       NA          NA          NA          NA
+    ## 2        IOWA       NA       NA          NA          NA          NA
+    ## 3        IOWA       NA       NA          NA          NA          NA
+    ## 4        IOWA       NA       NA          NA          NA          NA
+    ## 5        IOWA       NA       NA          NA          NA          NA
+    ## 6        IOWA       NA       NA          NA          NA          NA
+    ## 7        IOWA       NA       NA          NA          NA          NA
+    ## 8        IOWA       NA       NA          NA          NA          NA
+    ## 9        IOWA       NA       NA          NA          NA          NA
+    ## 10       IOWA       NA       NA          NA          NA          NA
+    ##    region_desc zip_5 watershed_code watershed_desc congr_district_code
+    ## 1           NA    NA              0             NA                  NA
+    ## 2           NA    NA              0             NA                  NA
+    ## 3           NA    NA              0             NA                  NA
+    ## 4           NA    NA              0             NA                  NA
+    ## 5           NA    NA              0             NA                  NA
+    ## 6           NA    NA              0             NA                  NA
+    ## 7           NA    NA              0             NA                  NA
+    ## 8           NA    NA              0             NA                  NA
+    ## 9           NA    NA              0             NA                  NA
+    ## 10          NA    NA              0             NA                  NA
+    ##    country_code  country_name location_desc year freq_desc begin_code
+    ## 1          9000 UNITED STATES          IOWA 2015   MONTHLY          1
+    ## 2          9000 UNITED STATES          IOWA 2015   MONTHLY          2
+    ## 3          9000 UNITED STATES          IOWA 2015   MONTHLY          3
+    ## 4          9000 UNITED STATES          IOWA 2015   MONTHLY          4
+    ## 5          9000 UNITED STATES          IOWA 2015   MONTHLY          5
+    ## 6          9000 UNITED STATES          IOWA 2015   MONTHLY          6
+    ## 7          9000 UNITED STATES          IOWA 2014    ANNUAL          0
+    ## 8          9000 UNITED STATES          IOWA 2014   MONTHLY          1
+    ## 9          9000 UNITED STATES          IOWA 2014   MONTHLY          2
+    ## 10         9000 UNITED STATES          IOWA 2014   MONTHLY          3
+    ##    end_code reference_period_desc week_ending           load_time Value
+    ## 1         1                   JAN          NA 2015-03-30 15:05:33  3.85
+    ## 2         2                   FEB          NA 2015-04-30 15:00:23  3.79
+    ## 3         3                   MAR          NA 2015-05-28 15:04:02  3.83
+    ## 4         4                   APR          NA 2015-06-29 15:00:16  3.74
+    ## 5         5                   MAY          NA 2015-07-30 15:00:17  3.60
+    ## 6         6                   JUN          NA 2015-07-30 15:00:17  3.56
+    ## 7         0        MARKETING YEAR          NA 2015-02-25 16:30:07  3.70
+    ## 8         1                   JAN          NA 2015-02-27 15:10:53  4.43
+    ## 9         2                   FEB          NA 2015-03-30 15:05:33  4.43
+    ## 10        3                   MAR          NA 2015-04-30 15:00:23  4.55
+    ##    CV....
+    ## 1      NA
+    ## 2      NA
+    ## 3      NA
+    ## 4      NA
+    ## 5      NA
+    ## 6      NA
+    ## 7      NA
+    ## 8      NA
+    ## 9      NA
+    ## 10     NA
+
+~~~~~~~~
+
+Click on the *Environment* tab in RStudio and click `IAPrice` in the
+*Data* section. This will open up the data in RStudio's data viewer.
+This is not quite as functional as Microsoft Excel, but it is handy
+nonetheless.
+
 Graphing Basics
 ---------------
 
-{title="", linenos=off}  
 ~~~~~~~~
 
     plot(CZ2015$Dat, CZ2015$Last)
 
-![](images/unnamed-chunk-8-1.png)
-
 ~~~~~~~~
+
+    plot(CZ2015$Dat, CZ2015$Last)
+
+![](images/unnamed-chunk-10-1.png)
+
+[1] Documentation for the USDA NASS API can be found
+<http://quickstats.nass.usda.gov/api>. At this point, do not worry about
+understanding how to make sense of the documentation. This is simply a
+reference for your possible future use. I will provide all the correct
+URLs in the text.
