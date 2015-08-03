@@ -527,7 +527,9 @@ Now try the code from above.
 
     qplot(DATA$Height)
 
-![](images/unnamed-chunk-19-1.png) ~~~~~~~~
+![](images/unnamed-chunk-19-1.png)
+
+~~~~~~~~
 
 Now we were able to make a frequency plot for height! It shows how many
 obervations at each height there are in the data set.
@@ -548,10 +550,10 @@ projects, we will create a new project for each chapter of this book.
 3.  choose `Existing Directory` since we already created a Chapter1
     folder and saved a script to it.
 
-Now you have an R project for Chapter 1 of this book. I would like you
-to make a new folder and save an R project to it for each Chapter in the
-text. We will be generating file and figures as exercises and arranging
-R projects this way will keep us organized.
+Now you have an R project for Chapter 1 of this book. Make a new folder
+and save an R project to it for each Chapter in the text. We will be
+generating file and figures as exercises and arranging R projects this
+way will keep us organized.
 
 Other Resources for Getting Started with R
 ------------------------------------------

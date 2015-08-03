@@ -329,7 +329,8 @@ library(ggplot2)
 qplot(DATA$Height)
 
 ```
-\~\~\~\~\~\~\~\~
+
+\~\~\~\~\~\~\~\~ 
 
 Now we were able to make a frequency plot for height! It shows how many obervations at each height there are in the data set. 
 
@@ -342,7 +343,7 @@ Initializing an R project is a good way to keep all of your files and directorie
 2. Choose to save the workspace if prompted.
 3. choose `Existing Directory` since we already created a Chapter1 folder and saved a script to it. 
 
-Now you have an R project for Chapter 1 of this book. I would like you to make a new folder and save an R project to it for each Chapter in the text. We will be generating file and figures as exercises and arranging R projects this way will keep us organized.
+Now you have an R project for Chapter 1 of this book. Make a new folder and save an R project to it for each Chapter in the text. We will be generating file and figures as exercises and arranging R projects this way will keep us organized.
 
 ## Other Resources for Getting Started with R
 
