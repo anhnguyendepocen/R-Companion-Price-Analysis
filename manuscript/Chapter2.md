@@ -377,16 +377,15 @@ verify what you downloaded looks as you expect it to.
 Graphing Basics
 ---------------
 
-The final function we will cover in this chapter is basic plotting.
-Above, we already used `qplot()` from the `ggplot2` package to plot a
-frequency chart. The function below, `plot()`, comes installed with base
-R, so no need to install any packages before calling the function. We
-will plot the corn price data we imported previously in the chapter. It
-should be stored as a variable called `CZ2015`. We will plot the
-*Settle* prices over time. The `plot()` function takes to arguments. It
-needs a variable to plot along the x-axis and a varaible to plot along
-the y-axis. We will put *Date* along the x-axis and *Settle* prices
-along the y-axis.
+The final topic we will cover in this chapter is basic plotting. Above,
+we already used `qplot()` from the `ggplot2` package to plot a frequency
+chart. The function below, `plot()`, comes installed with base R, so no
+need to install any packages before calling the function. We will plot
+the corn price data we imported previously in the chapter. It should be
+stored as a variable called `CZ2015`. We will plot the *Settle* prices
+over time. The `plot()` function takes to arguments. It needs a variable
+to plot along the x-axis and a varaible to plot along the y-axis. We
+will put *Date* along the x-axis and *Settle* prices along the y-axis.
 
 ~~~~~~~~
 
@@ -402,6 +401,8 @@ along the y-axis.
 
     plot(CZ2015$Date, CZ2015$Settle)
 
+![](images/unnamed-chunk-10-1.png)
+
 This plot is ok, but it is not exactly up to par when you think about
 what charts in finance, for example, usually look like. The `quantmod`
 package has become the most popular R package for charting. Go ahead and
@@ -412,7 +413,7 @@ install it an load it into your library.
     library(quantmod)
     library(xts)
 
-Now, lets plot December 2015 soybean prices that we imported earlier. To
+Now, lets plot December 2015 wheat prices that we imported earlier. To
 do this we will use the function `chartSeries()` from the `quantmod`
 package. It expects data to be a time series, and it expects to recieve
 Open, High, Low, Close, and Volume.
