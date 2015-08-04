@@ -81,7 +81,21 @@ data.frame-type variable and its size.
 ~~~~~~~~
 
 The `head()` function displays the first five rows of data and the
-`tail()` displays the last five rows.
+`tail()` displays the last five rows. If you want to see more of the
+data you can click on the variable name in the *Environment* tab. You
+can see columns for *Date*, *Open*, *High*, *Low*, *Last*, *Change*,
+*Settle*, *Volume*, and *Open Interest*. *Open*, loosely defined, is the
+price the futures contract was trading at the open of the trading day.
+*High* and *Low* are the highest and lowest prices of the day
+respectively. *Last* is the price traded at the end of the trading day.
+*Settle* is the price determined by the exchage as the price against
+which accounts will be settled. This is usually very close to the last
+price, but the exchange uses a methodology to arrive at the settle price
+based on the price at which the contract was trading in the final
+moments of the trading day. If the close was volatile, as it often is,
+there can be some difference between the last price and the settle
+price. *Change* is the difference between todays *Settle* price and
+yesterday's *Settle* price.
 
 ### From Microsoft Excel
 
@@ -152,19 +166,19 @@ to download the December 2015 corn futures from
     head(CZ2015)
 
     ##         Date   Open   High    Low   Last Change Settle Volume
-    ## 1 2015-07-31 385.00 387.75 379.25 381.25   2.50 381.25 147264
-    ## 2 2015-07-30 378.25 385.00 375.75 385.00   5.50 383.75 177670
-    ## 3 2015-07-29 387.75 388.00 377.25 377.50   7.25 378.25 144952
-    ## 4 2015-07-28 383.75 386.25 380.25 386.00   2.00 385.50 160938
-    ## 5 2015-07-27 399.00 399.25 383.00 384.00  19.25 383.50 266575
-    ## 6 2015-07-24 413.75 413.75 402.00 402.75  11.00 402.75 135131
+    ## 1 2015-08-03 380.00 380.50 374.50 378.75   4.75 376.50 131415
+    ## 2 2015-07-31 385.00 387.75 379.25 381.25   2.50 381.25 147264
+    ## 3 2015-07-30 378.25 385.00 375.75 385.00   5.50 383.75 177670
+    ## 4 2015-07-29 387.75 388.00 377.25 377.50   7.25 378.25 144952
+    ## 5 2015-07-28 383.75 386.25 380.25 386.00   2.00 385.50 160938
+    ## 6 2015-07-27 399.00 399.25 383.00 384.00  19.25 383.50 266575
     ##   Open.Interest
-    ## 1        592126
-    ## 2        575663
-    ## 3        573381
-    ## 4        577113
-    ## 5        568270
-    ## 6        568386
+    ## 1        602431
+    ## 2        592126
+    ## 3        575663
+    ## 4        573381
+    ## 5        577113
+    ## 6        568270
 
 ~~~~~~~~
 
@@ -187,13 +201,20 @@ futures contract and see that the "Quandl Code" for `SX2015` is
 
     head(SX2015)
 
-    ##         Date   Open   High    Low  Last Change Settle Volume Open.Interest
-    ## 1 2015-07-31 951.75 952.50 938.00 939.5   9.75 940.25  88136        353259
-    ## 2 2015-07-30 943.00 957.00 942.75 951.5   6.75 950.00 101244        344157
-    ## 3 2015-07-29 947.00 954.75 940.75 943.5   1.50 943.25  98618        339565
-    ## 4 2015-07-28 935.50 948.75 935.00 946.0  11.50 944.75 110262        346137
-    ## 5 2015-07-27 960.00 960.00 931.75 935.0  31.75 933.25 148324        351599
-    ## 6 2015-07-24 980.25 982.25 963.25 968.0  15.50 965.00 101534        355249
+    ##         Date   Open   High    Low   Last Change Settle Volume
+    ## 1 2015-08-03 938.25 942.25 926.25 937.25   4.75 935.50  97404
+    ## 2 2015-07-31 951.75 952.50 938.00 939.50   9.75 940.25  88136
+    ## 3 2015-07-30 943.00 957.00 942.75 951.50   6.75 950.00 101244
+    ## 4 2015-07-29 947.00 954.75 940.75 943.50   1.50 943.25  98618
+    ## 5 2015-07-28 935.50 948.75 935.00 946.00  11.50 944.75 110262
+    ## 6 2015-07-27 960.00 960.00 931.75 935.00  31.75 933.25 148324
+    ##   Open.Interest
+    ## 1        355205
+    ## 2        353259
+    ## 3        344157
+    ## 4        339565
+    ## 5        346137
+    ## 6        351599
 
 ~~~~~~~~
 
@@ -207,13 +228,20 @@ futures.
 
     head(WZ2015)
 
-    ##         Date   Open  High    Low   Last Change Settle Volume Open.Interest
-    ## 1 2015-07-31 504.25 510.0 502.75 503.75    0.5 504.75  48802        133414
-    ## 2 2015-07-30 505.25 512.5 501.50 504.50    1.0 504.25  45608        126497
-    ## 3 2015-07-29 521.00 521.5 504.75 505.25   15.0 505.25  40265        125680
-    ## 4 2015-07-28 511.50 521.5 511.25 521.00    8.5 520.25  49435        129055
-    ## 5 2015-07-27 518.75 519.5 510.50 511.25    8.0 511.75  37667        127717
-    ## 6 2015-07-24 527.75 531.0 517.50 520.00    9.0 519.75  22414        127312
+    ##         Date   Open   High    Low   Last Change Settle Volume
+    ## 1 2015-08-03 503.00 507.75 496.25 506.75   0.25 505.00  35281
+    ## 2 2015-07-31 504.25 510.00 502.75 503.75   0.50 504.75  48802
+    ## 3 2015-07-30 505.25 512.50 501.50 504.50   1.00 504.25  45608
+    ## 4 2015-07-29 521.00 521.50 504.75 505.25  15.00 505.25  40265
+    ## 5 2015-07-28 511.50 521.50 511.25 521.00   8.50 520.25  49435
+    ## 6 2015-07-27 518.75 519.50 510.50 511.25   8.00 511.75  37667
+    ##   Open.Interest
+    ## 1        138304
+    ## 2        133414
+    ## 3        126497
+    ## 4        125680
+    ## 5        129055
+    ## 6        127717
 
 ~~~~~~~~
 
@@ -343,21 +371,86 @@ Farmers* for *Corn* in *Iowa* from *1970* to the present.
 
 Click on the *Environment* tab in RStudio and click `IAPrice` in the
 *Data* section. This will open up the data in RStudio's data viewer.
-This is not quite as functional as Microsoft Excel, but it is handy
-nonetheless.
+This is not quite as functional as Microsoft Excel, but it is handy to
+verify what you downloaded looks as you expect it to.
 
 Graphing Basics
 ---------------
 
+The final function we will cover in this chapter is basic plotting.
+Above, we already used `qplot()` from the `ggplot2` package to plot a
+frequency chart. The function below, `plot()`, comes installed with base
+R, so no need to install any packages before calling the function. We
+will plot the corn price data we imported previously in the chapter. It
+should be stored as a variable called `CZ2015`. We will plot the
+*Settle* prices over time. The `plot()` function takes to arguments. It
+needs a variable to plot along the x-axis and a varaible to plot along
+the y-axis. We will put *Date* along the x-axis and *Settle* prices
+along the y-axis.
+
 ~~~~~~~~
 
-    plot(CZ2015$Dat, CZ2015$Last)
+     library(RCurl)
+    CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+
+    plot(CZ2015$Dat, CZ2015$Settle)
 
 ~~~~~~~~
 
-    plot(CZ2015$Dat, CZ2015$Last)
+     library(RCurl)
+    CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
 
-![](images/unnamed-chunk-10-1.png)
+    plot(CZ2015$Date, CZ2015$Settle)
+
+This plot is ok, but it is not exactly up to par when you think about
+what charts in finance, for example, usually look like. The `quantmod`
+package has become the most popular R package for charting. Go ahead and
+install it an load it into your library.
+
+    install.packages("quantmod")
+    install.packages("xts")
+    library(quantmod)
+    library(xts)
+
+Now, lets plot December 2015 soybean prices that we imported earlier. To
+do this we will use the function `chartSeries()` from the `quantmod`
+package. It expects data to be a time series, and it expects to recieve
+Open, High, Low, Close, and Volume.
+
+~~~~~~~~
+
+    library(quantmod)
+    WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      # Removed columns Date, Change, Last, Open.Interest
+    WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))          # Defined WZ2015$Date to be recognized as a Date index with as.Date(). xts()                                                                              is a function to generate a time series data set with special properties that can be used by R functions. 
+    colnames(WZ2015_chart)[4] <- "Close"     # chartSeries() below needs the 'Settle' column to be named 'Close' instead.
+
+    chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
+
+~~~~~~~~
+
+There is a lot going on in this code chunk, actually. Let us go through
+the details, but what we just did is pretty advanced so do not feel
+overwhelmed. This was mostly to show you what is possible with financial
+data. To give you some perspective, it took me about an hour to search
+around and get the details right.
+
+The three first lines are all prepping the data to put it into the
+format the `chartSeries()` function expects.
+
+1.  In the first line we removed the columns Date, Change, Last,
+    Open.Interest because we need only Open, High, Low, Close.
+2.  The second line does two things. It defines `WZ2015_chart` as an xts
+    time series object, which is just a special class of object in R. It
+    has attributes some functions written especially for time series
+    data can utilize. The second argument of the `xts()` function uses
+    `order.by` to indicate the `WZ2015$Date` varaible should be used as
+    the date index. and the `as.Date()` function puts the data in a
+    proper format the `xts()` function recognizes.
+3.  The third line changes the column named "Settle", which is the 4th
+    column to "Close". This is becuase `chartSeries()` wants to see
+    columns Open, High, Low, Close, and Volume.
+
+![](images/unnamed-chunk-13-1.png)
 
 [1] Documentation for the USDA NASS API can be found
 <http://quickstats.nass.usda.gov/api>. At this point, do not worry about

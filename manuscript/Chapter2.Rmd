@@ -42,7 +42,7 @@ tail(CZ2015)
 \~\~\~\~\~\~\~\~
 
 
-The `head()` function displays the first five rows of data and the `tail()` displays the last five rows. 
+The `head()` function displays the first five rows of data and the `tail()` displays the last five rows. If you want to see more of the data you can click on the variable name in the *Environment* tab. You can see columns for *Date*, *Open*, *High*, *Low*, *Last*, *Change*, *Settle*, *Volume*, and *Open Interest*. *Open*, loosely defined, is the price the futures contract was trading at the open of the trading day. *High* and *Low* are the highest and lowest prices of the day respectively. *Last* is the price traded at the end of the trading day. *Settle* is the price determined by the exchage as the price against which accounts will be settled. This is usually very close to the last price, but the exchange uses a methodology to arrive at the settle price based on the price at which the contract was trading in the final moments of the trading day. If the close was volatile, as it often is, there can be some difference between the last price and the settle price. *Change* is the difference between todays *Settle* price and yesterday's *Settle* price. 
 
 ### From Microsoft Excel
 
@@ -150,24 +150,78 @@ head(IAPrice, 10)
 ```
 \~\~\~\~\~\~\~\~
 
-Click on the *Environment* tab in RStudio and click `IAPrice` in the *Data* section. This will open up the data in RStudio's data viewer. This is not quite as functional as Microsoft Excel, but it is handy nonetheless. 
+Click on the *Environment* tab in RStudio and click `IAPrice` in the *Data* section. This will open up the data in RStudio's data viewer. This is not quite as functional as Microsoft Excel, but it is handy to verify what you downloaded looks as you expect it to. 
 
 
 ## Graphing Basics
 
+The final function we will cover in this chapter is basic plotting. Above, we already used `qplot()` from the `ggplot2` package to plot a frequency chart. The function below, `plot()`, comes installed with base R, so no need to install any packages before calling the function. We will plot the corn price data we imported previously in the chapter. It should be stored as a variable called `CZ2015`. We will plot the *Settle* prices over time. The `plot()` function takes to arguments. It needs a variable to plot along the x-axis and a varaible to plot along the y-axis. We will put *Date* along the x-axis and *Settle* prices along the y-axis. 
 
 
 \~\~\~\~\~\~\~\~
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=-3, eval=FALSE}
+ library(RCurl)
+CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+CZ2015 <- read.csv(text = CZ2015)
 
-plot(CZ2015$Dat, CZ2015$Last)
+plot(CZ2015$Dat, CZ2015$Settle)
 
 ```
 
 \~\~\~\~\~\~\~\~
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=-3, eval=FALSE}
+ library(RCurl)
+CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+CZ2015 <- read.csv(text = CZ2015)
 
-plot(CZ2015$Dat, CZ2015$Last)
+plot(CZ2015$Date, CZ2015$Settle)
+
+
+```
+
+This plot is ok, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The `quantmod` package has become the most popular R package for charting. Go ahead and install it an load it into your library. 
+
+```{r, eval=FALSE}
+
+install.packages("quantmod")
+install.packages("xts")
+library(quantmod)
+library(xts)
+
+```
+
+Now, lets plot December 2015 soybean prices that we imported earlier. To do this we will use the function `chartSeries()` from the `quantmod` package. It expects data to be a time series, and it expects to recieve Open, High, Low, Close, and Volume.  
+
+\~\~\~\~\~\~\~\~
+```{r, echo=-2, eval=FALSE}
+library(quantmod)
+library(xts)
+WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      # Removed columns Date, Change, Last, Open.Interest
+WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))          # Defined WZ2015$Date to be recognized as a Date index with as.Date(). xts()                                                                              is a function to generate a time series data set with special properties that can be used by R functions. 
+colnames(WZ2015_chart)[4] <- "Close"     # chartSeries() below needs the 'Settle' column to be named 'Close' instead.
+
+chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
+
+```
+\~\~\~\~\~\~\~\~
+
+There is a lot going on in this code chunk, actually. Let us go through the details, but what we just did is pretty advanced so do not feel overwhelmed. This was mostly to show you what is possible with financial data. To give you some perspective, it took me about an hour to search around and get the details right. 
+
+The three first lines are all prepping the data to put it into the format the `chartSeries()` function expects. 
+
+1. In the first line we removed the columns Date, Change, Last, Open.Interest because we need only Open, High, Low, Close. 
+2. The second line does two things. It defines `WZ2015_chart` as an xts time series object, which is just a special class of object in R. It has attributes some functions written especially for time series data can utilize. The second argument of the `xts()` function uses `order.by` to indicate the `WZ2015$Date` varaible should be used as the date index. and the `as.Date()` function puts the data in a proper format the `xts()` function recognizes. 
+3. The third line changes the column named "Settle", which is the 4th column to "Close". This is becuase `chartSeries()` wants to see columns Open, High, Low, Close, and Volume. 
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+library(quantmod)
+WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      # Removed columns Date, Change, Last, Open.Interest
+WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))                 
+# Defined WZ2015$Date to be recognized as a Date index with as.Date(). xts() is a function to generate a time series data set with special properties that can be used by R functions. 
+colnames(WZ2015_chart)[4] <- "Close"     # chartSeries() below needs the 'Settle' column to be named 'Close' instead.
+
+chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
+
 
 ```
