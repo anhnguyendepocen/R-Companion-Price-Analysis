@@ -420,9 +420,9 @@ Open, High, Low, Close, and Volume.
 ~~~~~~~~
 
     library(quantmod)
-    WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      # Removed columns Date, Change, Last, Open.Interest
-    WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))          # Defined WZ2015$Date to be recognized as a Date index with as.Date(). xts()                                                                              is a function to generate a time series data set with special properties that can be used by R functions. 
-    colnames(WZ2015_chart)[4] <- "Close"     # chartSeries() below needs the 'Settle' column to be named 'Close' instead.
+    WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      
+    WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))    
+    colnames(WZ2015_chart)[4] <- "Close"    
 
     chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
 
