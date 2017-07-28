@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n# Chapter 6: Forecasting Prices with Time-Series Econometric Techniques\n\n## Time Series Basics\n\n## Single Market Models - ARIMA\n\n## Multiple Market Models - VAR\n\n## Multiple Market Models - VECM",
+    "created" : 1501259789987.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "74429115",
+    "id" : "F1C1078E",
+    "lastKnownWriteTime" : 1501259792,
+    "last_content_update" : 1501259792341,
+    "path" : "P:/Github-Repos/R-Companion-Price-Analysis/Chapter6.Rmd",
+    "project_path" : "Chapter6.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

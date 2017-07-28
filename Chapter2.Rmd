@@ -1,5 +1,223 @@
-# Chapter 2: Graphing Basics
 
-In Chapter 2 of *Price Analysis* we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an api (application program interface) call. Using api's greatly reduce the work and time required to get up and running with an analysis, and more entities provide api access all the time. 
+# Chapter 2: Getting Started
 
-#
+In Chapter 2 of *Price Analysis* we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an API (application program interface) call. Using API's greatly reduce the work and time required to get up and running with an analysis, and more entities provide API access all the time. 
+
+We will keep the introduction here to the bare minimum required to get us up and running and performing price analysis.   
+
+## Data Import From Files on Your Hard Drive
+
+Beginning analysis with R usually involves importing data from our hard drive. First we will download some data from [Quandl](Quandl.com).
+
+Navigate to where [CZ2015](https://www.quandl.com/data/CME/CZ2015-Corn-Futures-December-2015-CZ2015) (December 2015 Corn future) is housed.
+
+![Screenshot of CZ2015 page on Quandl.com](images\quandlCZ2015.png)
+
+There is a button that says 'download' above the chart of the prices. When you click it, you will see file format options. We will work with CSV the most, but will learn how to import Excel files as well. We will not use json or XML file formats in this book.  
+
+### From Comma Separated Files
+
+Let's begin by loading the price data into R in the CSV format. Click the 'Download' button and then right-click 'CSV'. Choose 'Save Link As'. This gives you the ability to save it directly into your Chapter1 R project folder. If you click 'CSV' instead of right-click, the CSV file will automatically download into your 'Downloads' folder. This is OK, but you will need to go through the extra step of copy and pasting the CSV file into your Chapter1 project folder. 
+
+Now we have the data on our hard drive, and we will load it into R for analysis! The `read.csv()` function looks for the file `CME-CZ2015.csv` in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the "Environment" tab of the upper right pane of the RStudio console you should see the variable `CZ2015`. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size. 
+
+
+
+```{r}
+CZ2015 <- read.csv(file="CME-CZ2015.csv")
+
+head(CZ2015)
+tail(CZ2015)
+```
+
+
+
+The `head()` function displays the first five rows of data and the `tail()` displays the last five rows. If you want to see more of the data you can click on the variable name in the *Environment* tab. You can see columns for *Date*, *Open*, *High*, *Low*, *Last*, *Change*, *Settle*, *Volume*, and *Open Interest*. *Open*, loosely defined, is the price the futures contract was trading at the open of the trading day. *High* and *Low* are the highest and lowest prices of the day respectively. *Last* is the price traded at the end of the trading day. *Settle* is the price determined by the exchange as the price against which accounts will be settled. This is usually very close to the last price, but the exchange uses a methodology to arrive at the settle price based on the price at which the contract was trading in the final moments of the trading day. If the close was volatile, as it often is, there can be some difference between the last price and the settle price. *Change* is the difference between today's *Settle* price and yesterday's *Settle* price. 
+
+### From Microsoft Excel
+
+It is best practice to always download your data as CSV files for the most flexibility possible. However, R does have the ability to read Microsoft Excel files, and it works very much like reading in CSV files. The function we need to do this does not come in the base R package that gets loaded when you install R. We need to *install* the package "xlsx" and load it into our *library*. Run the two lines of code below and we will be ready to use the `read.xlsx()` function from this package to load our `.xls` data file.  
+
+
+```{r, eval=FALSE}
+install.packages("xlsx")
+library(xlsx)
+```
+
+
+
+Now that we have the proper package installed, using `read.xlsx()` is very similar to the `read.csv()` function we used before. The only addition is that since excel files can have multiple worksheets, we need to tell the function which worksheet to import. In our case the data file is simple with only one worksheet, so we just put a 1 in the second argument of the function. 
+
+
+```{r, echo=-1, warning=FALSE, message=FALSE}
+ library(xlsx)
+
+ CZ2015 <- read.xlsx(file="CME-CZ2015.xls", 1)
+ 
+```
+
+
+
+## Working with API's
+
+When a website has an API set of for their data warehouse, it is easy to import data into a programming environment with script. This saves a lot of time navigating and clicking through websites. Since we are learning to use R for price analysis, we will definitely want to make use of API calls when we can. We will need to install another package that provides functionality to extract information from webpages. Install the `RCurl` package and load the library by running the following code. 
+
+
+
+```{r, eval=FALSE}
+install.packages("RCurl")
+library(RCurl)
+```
+
+
+
+### Quandl's API
+
+In the previous sections we downloaded data from [Quandl.com](https://quandl.com) manually. They provide an API we can use to get their data directly into the R environment. To do this we will make use of the `getURL()` function from the `RCurl` package along with the `read.csv()` function we used earlier. Run the following code to download the December 2015 corn futures from [Quandl.com](https://quandl.com).
+
+
+
+```{r, echo=-1, warning=FALSE, message=FALSE}
+ library(RCurl)
+
+CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+CZ2015 <- read.csv(text = CZ2015)
+
+head(CZ2015)
+
+```
+
+
+Note that this is the same data we manually downloaded before. To download a different data set, you just need to adjust the URL in the `getURL()` function to point to the right data set. Note the last two components of the URL, `CME` and `CZ2015.csv` match the "Quandl Code" in the top right corner of [Quandl.com](https://quandl.com).
+
+For example, if you search on the [Quandl.com](https://quandl.com) webpage for `CME/SX2015` you can find the November 2015 CME soybeans futures contract and see that the "Quandl Code" for `SX2015` is `CME/SX2015`. Now if we adjust our API call above to point to November 2015 soybeans, we will have that data as well. 
+
+
+```{r, echo=-1, warning=FALSE, message=FALSE}
+ library(RCurl)
+
+SX2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/SX2015.csv")
+SX2015 <- read.csv(text = SX2015)
+
+head(SX2015)
+
+```
+
+
+And now use the API call to get December 2015 soft red winter wheat futures. 
+
+
+```{r, echo=-1, warning=FALSE, message=FALSE}
+ library(RCurl)
+
+WZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/WZ2015.csv")
+WZ2015 <- read.csv(text = WZ2015)
+
+head(WZ2015)
+
+```
+
+
+
+### USDA API's
+
+Some of the Services within the USDA provide API access to their data sets. The [USDA Open Data Catalog](http://www.usda.gov/wps/portal/usda/usdahome?navid=data) is a collection of all the publicly available USDA data sets. If you click on the links you will often just go to the web-front end of a query-able database. However, there are two links at the top of the webpage that say 'XML Version' and 'JSON Version'. These links are useful for accessing the API's that will either allow you to download data directly into the R environment or reveals the URL that will automatically download the data in .csv or other useful format that is easily then imported into the R environment.
+
+<!-- Feedgrains database available here. Historical balance sheet categories-->
+<!-- http://www.gipsa.usda.gov/fgis/exportgrain/CY2015.csv  URL format of GIPSA export inspections--> 
+
+The URL to use the USDA NASS API for *Corn Ave Prices Received* is not as simple as the Quandl API above.[^documentation] 
+To use the USDA API's you need to request and authentication code. This allows the USDA to keep track of who is accessing the data and make protect against attacks on the data servers. To request an API, click *obtain an API key* on the [http://quickstats.nass.usda.gov/api](http://quickstats.nass.usda.gov/api). Then enter the requested information. You will receive an email with the API key. The code below will download the *Average Prices Recieved by Farmers* for *Corn* in *Iowa* from *1970* to the present.  
+
+[^documentation]: Documentation for the USDA NASS API can be found http://quickstats.nass.usda.gov/api. At this point, do not worry about understanding how to make sense of the documentation. This is simply a reference for your possible future use. I will provide all the correct URLs in the text. 
+ 
+
+
+```{r, echo=-1, warning=FALSE, message=FALSE}
+library(RCurl)
+
+IAPrice <- 'http://quickstats.nass.usda.gov/api/api_GET/?key=6E3544A2-95E5-3916-ACA4-8AAE9CA28130&commodity_desc=CORN&year__GE=1980&state_alpha=IA&format=CSV&statisticcat_desc=PRICE%20RECEIVED'
+IAPrice <- read.csv(IAPrice)
+
+head(IAPrice, 10)
+
+```
+
+
+Click on the *Environment* tab in RStudio and click `IAPrice` in the *Data* section. This will open up the data in RStudio's data viewer. This is not quite as functional as Microsoft Excel, but it is handy to verify what you downloaded looks as you expect it to. 
+
+
+## Graphing Basics
+
+The final topic we will cover in this chapter is basic plotting. Above, we already used `qplot()` from the `ggplot2` package to plot a frequency chart. The function below, `plot()`, comes installed with base R, so no need to install any packages before calling the function. We will plot the corn price data we imported previously in the chapter. It should be stored as a variable called `CZ2015`. We will plot the *Settle* prices over time. The `plot()` function takes to arguments. It needs a variable to plot along the x-axis and a variable to plot along the y-axis. We will put *Date* along the x-axis and *Settle* prices along the y-axis. 
+
+
+
+```{r, echo=-3, eval=FALSE}
+ library(RCurl)
+CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+CZ2015 <- read.csv(text = CZ2015)
+
+plot(CZ2015$Dat, CZ2015$Settle)
+
+```
+
+
+
+
+
+```{r, echo=-3, eval=TRUE}
+ library(RCurl)
+CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
+CZ2015 <- read.csv(text = CZ2015)
+
+plot(CZ2015$Date, CZ2015$Settle)
+
+
+```
+
+This plot is OK, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The `quantmod` package has become the most popular R package for charting. Go ahead and install it an load it into your library. 
+
+```{r, eval=FALSE}
+
+install.packages("quantmod")
+install.packages("xts")
+library(quantmod)
+library(xts)
+
+```
+
+Now, lets plot December 2015 wheat prices that we imported earlier. To do this we will use the function `chartSeries()` from the `quantmod` package. It expects data to be a time series, and it expects to receive Open, High, Low, Close, and Volume.  
+
+
+```{r, echo=-2, eval=FALSE}
+library(quantmod)
+library(xts)
+WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      
+WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))    
+colnames(WZ2015_chart)[4] <- "Close"    
+
+chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
+
+```
+
+
+There is a lot going on in this code chunk, actually. Let us go through the details, but what we just did is pretty advanced so do not feel overwhelmed. This was mostly to show you what is possible with financial data. To give you some perspective, it took me about an hour to search around and get the details right. 
+
+The three first lines are all prepping the data to put it into the format the `chartSeries()` function expects. 
+
+1. In the first line we removed the columns Date, Change, Last, Open.Interest because we need only Open, High, Low, Close. 
+2. The second line does two things. It defines `WZ2015_chart` as an xts time series object, which is just a special class of object in R. It has attributes some functions written especially for time series data can utilize. The second argument of the `xts()` function uses `order.by` to indicate the `WZ2015$Date` variable should be used as the date index. and the `as.Date()` function puts the data in a proper format the `xts()` function recognizes. 
+3. The third line changes the column named "Settle", which is the 4th column to "Close". This is because `chartSeries()` wants to see columns Open, High, Low, Close, and Volume. 
+
+```{r, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE}
+library(quantmod)
+WZ2015_chart <- subset(WZ2015, select= -c(Date, Change, Last, Open.Interest))      # Removed columns Date, Change, Last, Open.Interest
+WZ2015_chart <- xts(WZ2015_chart, order.by = as.Date(WZ2015$Date))                 
+# Defined WZ2015$Date to be recognized as a Date index with as.Date(). xts() is a function to generate a time series data set with special properties that can be used by R functions. 
+colnames(WZ2015_chart)[4] <- "Close"     # chartSeries() below needs the 'Settle' column to be named 'Close' instead.
+
+chartSeries(WZ2015_chart['2015-01-01/'], type = "candlesticks", theme = chartTheme("white"))
+
+
+```

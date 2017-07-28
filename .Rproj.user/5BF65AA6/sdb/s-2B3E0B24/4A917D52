@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "--- \ntitle: \"R Companion to Price Analysis\"\nauthor: \"Mindy L. Mallory\"\ndescription: \"This book is a companion to 'Price Analysis: A Fundamental Approach to the Study of Commodity Prices'. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.\"\ncover-image: \"images/cover.png\"\ndate: \"`r Sys.Date()`\"\nsite: bookdown::bookdown_site\ndocumentclass: book\nbibliography: [book.bib]\nbiblio-style: apalike\nlink-citations: yes\ngithub-repo: mindymallory/R-Companion-Price-Analysis\nurl: 'http\\:mindymallory.github.io/R-Companion-Price-Analysis/'\ndownload:\n      - [\"book.pdf\", \"PDF\"]\n      - [\"book.epub\", \"EPUB\"]\n---\n\n\n\n# Preface {-}\n\n\n![](images/cover.png)",
+    "created" : 1501259098397.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2252047881",
+    "id" : "4A917D52",
+    "lastKnownWriteTime" : 1501259418,
+    "last_content_update" : 1501259418349,
+    "path" : "P:/Github-Repos/R-Companion-Price-Analysis/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

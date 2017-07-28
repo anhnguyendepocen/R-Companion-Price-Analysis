@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# Chapter 5: The Markets Reaction to USDA Reports\n\n## Explain the BBO Data from this Chapter's Example\n\n## Explain the Source Code from this Chapter's Figures\n\n",
+    "created" : 1501259785936.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3161761743",
+    "id" : "9FD03E7C",
+    "lastKnownWriteTime" : 1501259788,
+    "last_content_update" : 1501259788873,
+    "path" : "P:/Github-Repos/R-Companion-Price-Analysis/Chapter5.Rmd",
+    "project_path" : "Chapter5.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

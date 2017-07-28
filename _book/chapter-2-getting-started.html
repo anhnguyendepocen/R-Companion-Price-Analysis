@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Companion to Price Analysis</title>
+  <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
+  <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+  <meta property="og:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  
+  <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+
+<meta name="author" content="Mindy L. Mallory">
+
+
+<meta name="date" content="2017-07-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="getting-started-with-r-and-rstudio.html">
+<link rel="next" href="chapter-3-fundamental-analysis-and-the-balance-sheet.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting Started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#download-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#the-rstudio-iintegrated-development-environment-ide"><i class="fa fa-check"></i><b>1.2</b> The RStudio Iintegrated Development Environment (IDE)</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#basic-calculations"><i class="fa fa-check"></i><b>1.3</b> Basic Calculations</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#datatypes"><i class="fa fa-check"></i><b>1.4</b> Datatypes</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#accessing-elements-of-vectors-matrices-and-lists-by-index"><i class="fa fa-check"></i><b>1.5</b> Accessing elements of Vectors, Matrices, and Lists by Index</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#data.frame"><i class="fa fa-check"></i><b>1.6</b> Data.frame</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#subsetting"><i class="fa fa-check"></i><b>1.6.1</b> Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#install-and-load-a-package-into-the-library"><i class="fa fa-check"></i><b>1.7</b> Install and Load a Package into the Library</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-a-project"><i class="fa fa-check"></i><b>1.8</b> Setting up a Project</a></li>
+<li class="chapter" data-level="1.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#other-resources-for-getting-started-with-r"><i class="fa fa-check"></i><b>1.9</b> Other Resources for Getting Started with R</a></li>
+<li class="chapter" data-level="1.10" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html"><i class="fa fa-check"></i><b>2</b> Chapter 2: Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#data-import-from-files-on-your-hard-drive"><i class="fa fa-check"></i><b>2.1</b> Data Import From Files on Your Hard Drive</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-comma-separated-files"><i class="fa fa-check"></i><b>2.1.1</b> From Comma Separated Files</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-microsoft-excel"><i class="fa fa-check"></i><b>2.1.2</b> From Microsoft Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#working-with-apis"><i class="fa fa-check"></i><b>2.2</b> Working with API’s</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#quandls-api"><i class="fa fa-check"></i><b>2.2.1</b> Quandl’s API</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#usda-apis"><i class="fa fa-check"></i><b>2.2.2</b> USDA API’s</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#graphing-basics"><i class="fa fa-check"></i><b>2.3</b> Graphing Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><i class="fa fa-check"></i><b>3</b> Chapter 3: Fundamental Analysis and the Balance Sheet</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html#estimate-trend-yield"><i class="fa fa-check"></i><b>3.1</b> Estimate Trend Yield</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html#forecast-price-that-clears-the-market-based-on-the-balance-sheet"><i class="fa fa-check"></i><b>3.2</b> Forecast Price that Clears the Market Based on the Balance Sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html"><i class="fa fa-check"></i><b>4</b> Chapter 4: Forecasting Components of the Balance Sheet</a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-yield-based-on-crop-conditions"><i class="fa fa-check"></i><b>4.1</b> Forecast Yield Based on Crop Conditions</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecasting-ending-stocks"><i class="fa fa-check"></i><b>4.2</b> Forecasting Ending Stocks</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-carryout-based-on-estimated-elasticities-and-recent-prices"><i class="fa fa-check"></i><b>4.3</b> Forecast Carryout Based on Estimated Elasticities and Recent Prices</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-exports"><i class="fa fa-check"></i><b>4.4</b> Forecast Exports</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html"><i class="fa fa-check"></i><b>5</b> Chapter 5: The Markets Reaction to USDA Reports</a><ul>
+<li class="chapter" data-level="5.1" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html#explain-the-bbo-data-from-this-chapters-example"><i class="fa fa-check"></i><b>5.1</b> Explain the BBO Data from this Chapter’s Example</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html#explain-the-source-code-from-this-chapters-figures"><i class="fa fa-check"></i><b>5.2</b> Explain the Source Code from this Chapter’s Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><i class="fa fa-check"></i><b>6</b> Chapter 6: Forecasting Prices with Time-Series Econometric Techniques</a><ul>
+<li class="chapter" data-level="6.1" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#time-series-basics"><i class="fa fa-check"></i><b>6.1</b> Time Series Basics</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#single-market-models---arima"><i class="fa fa-check"></i><b>6.2</b> Single Market Models - ARIMA</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---var"><i class="fa fa-check"></i><b>6.3</b> Multiple Market Models - VAR</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---vecm"><i class="fa fa-check"></i><b>6.4</b> Multiple Market Models - VECM</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-2-getting-started" class="section level1">
+<h1><span class="header-section-number">2</span> Chapter 2: Getting Started</h1>
+<p>In Chapter 2 of <em>Price Analysis</em> we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an API (application program interface) call. Using API’s greatly reduce the work and time required to get up and running with an analysis, and more entities provide API access all the time.</p>
+<p>We will keep the introduction here to the bare minimum required to get us up and running and performing price analysis.</p>
+<div id="data-import-from-files-on-your-hard-drive" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data Import From Files on Your Hard Drive</h2>
+<p>Beginning analysis with R usually involves importing data from our hard drive. First we will download some data from <a href="Quandl.com">Quandl</a>.</p>
+<p>Navigate to where <a href="https://www.quandl.com/data/CME/CZ2015-Corn-Futures-December-2015-CZ2015">CZ2015</a> (December 2015 Corn future) is housed.</p>
+<div class="figure">
+<img src="images/quandlCZ2015.png" alt="Screenshot of CZ2015 page on Quandl.com" />
+<p class="caption">Screenshot of CZ2015 page on Quandl.com</p>
+</div>
+<p>There is a button that says ‘download’ above the chart of the prices. When you click it, you will see file format options. We will work with CSV the most, but will learn how to import Excel files as well. We will not use json or XML file formats in this book.</p>
+<div id="from-comma-separated-files" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> From Comma Separated Files</h3>
+<p>Let’s begin by loading the price data into R in the CSV format. Click the ‘Download’ button and then right-click ‘CSV’. Choose ‘Save Link As’. This gives you the ability to save it directly into your Chapter1 R project folder. If you click ‘CSV’ instead of right-click, the CSV file will automatically download into your ‘Downloads’ folder. This is OK, but you will need to go through the extra step of copy and pasting the CSV file into your Chapter1 project folder.</p>
+<p>Now we have the data on our hard drive, and we will load it into R for analysis! The <code>read.csv()</code> function looks for the file <code>CME-CZ2015.csv</code> in the working directory (file on your hard drive) and loads it into the R environment as a data.frame. In the “Environment” tab of the upper right pane of the RStudio console you should see the variable <code>CZ2015</code>. If you hover your mouse over it, RStudio will tell you that it is a data.frame-type variable and its size.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">CZ2015 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;CME-CZ2015.csv&quot;</span>)
+
+<span class="kw">head</span>(CZ2015)</code></pre></div>
+<pre><code>##         Date   Open   High    Low   Last Change Settle Volume
+## 1 2015-07-27 399.00 399.25 383.00 384.00  19.25 383.50 266575
+## 2 2015-07-24 413.75 413.75 402.00 402.75  11.00 402.75 135131
+## 3 2015-07-23 413.75 415.50 408.50 413.25   0.25 413.75 127893
+## 4 2015-07-22 418.25 418.25 410.25 413.25   4.00 413.50 134747
+## 5 2015-07-21 417.50 421.00 413.00 417.50   1.50 417.50 141530
+## 6 2015-07-20 428.00 428.50 415.25 416.50  15.25 416.00 190950
+##   Open.Interest
+## 1        568270
+## 2        568386
+## 3        574043
+## 4        572208
+## 5        571192
+## 6        557482</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(CZ2015)</code></pre></div>
+<pre><code>##           Date Open  High Low Last Change Settle Volume Open.Interest
+## 905 2011-12-21    0   0.0   0   NA     NA 567.75      0             8
+## 906 2011-12-20    0   0.0   0   NA     NA 562.00      0             8
+## 907 2011-12-19  555 555.0 555   NA     NA 559.00      1             7
+## 908 2011-12-16    0   0.0   0   NA     NA 556.50      0             7
+## 909 2011-12-15  545 549.5 545   NA     NA 550.25      7             0
+## 910 2011-12-14    0   0.0   0   NA     NA 549.50      0             0</code></pre>
+<p>The <code>head()</code> function displays the first five rows of data and the <code>tail()</code> displays the last five rows. If you want to see more of the data you can click on the variable name in the <em>Environment</em> tab. You can see columns for <em>Date</em>, <em>Open</em>, <em>High</em>, <em>Low</em>, <em>Last</em>, <em>Change</em>, <em>Settle</em>, <em>Volume</em>, and <em>Open Interest</em>. <em>Open</em>, loosely defined, is the price the futures contract was trading at the open of the trading day. <em>High</em> and <em>Low</em> are the highest and lowest prices of the day respectively. <em>Last</em> is the price traded at the end of the trading day. <em>Settle</em> is the price determined by the exchange as the price against which accounts will be settled. This is usually very close to the last price, but the exchange uses a methodology to arrive at the settle price based on the price at which the contract was trading in the final moments of the trading day. If the close was volatile, as it often is, there can be some difference between the last price and the settle price. <em>Change</em> is the difference between today’s <em>Settle</em> price and yesterday’s <em>Settle</em> price.</p>
+</div>
+<div id="from-microsoft-excel" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> From Microsoft Excel</h3>
+<p>It is best practice to always download your data as CSV files for the most flexibility possible. However, R does have the ability to read Microsoft Excel files, and it works very much like reading in CSV files. The function we need to do this does not come in the base R package that gets loaded when you install R. We need to <em>install</em> the package “xlsx” and load it into our <em>library</em>. Run the two lines of code below and we will be ready to use the <code>read.xlsx()</code> function from this package to load our <code>.xls</code> data file.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;xlsx&quot;</span>)
+<span class="kw">library</span>(xlsx)</code></pre></div>
+<p>Now that we have the proper package installed, using <code>read.xlsx()</code> is very similar to the <code>read.csv()</code> function we used before. The only addition is that since excel files can have multiple worksheets, we need to tell the function which worksheet to import. In our case the data file is simple with only one worksheet, so we just put a 1 in the second argument of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> CZ2015 &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="dt">file=</span><span class="st">&quot;CME-CZ2015.xls&quot;</span>, <span class="dv">1</span>)</code></pre></div>
+</div>
+</div>
+<div id="working-with-apis" class="section level2">
+<h2><span class="header-section-number">2.2</span> Working with API’s</h2>
+<p>When a website has an API set of for their data warehouse, it is easy to import data into a programming environment with script. This saves a lot of time navigating and clicking through websites. Since we are learning to use R for price analysis, we will definitely want to make use of API calls when we can. We will need to install another package that provides functionality to extract information from webpages. Install the <code>RCurl</code> package and load the library by running the following code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RCurl&quot;</span>)
+<span class="kw">library</span>(RCurl)</code></pre></div>
+<div id="quandls-api" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Quandl’s API</h3>
+<p>In the previous sections we downloaded data from <a href="https://quandl.com">Quandl.com</a> manually. They provide an API we can use to get their data directly into the R environment. To do this we will make use of the <code>getURL()</code> function from the <code>RCurl</code> package along with the <code>read.csv()</code> function we used earlier. Run the following code to download the December 2015 corn futures from <a href="https://quandl.com">Quandl.com</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
+CZ2015 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text =</span> CZ2015)
+
+<span class="kw">head</span>(CZ2015)</code></pre></div>
+<pre><code>##         Date   Open   High    Low   Last Change Settle Volume
+## 1 2015-12-14 373.50 381.75 373.50 381.00   8.75 381.75    903
+## 2 2015-12-11 377.00 378.75 372.75 373.25   4.25 373.00   2028
+## 3 2015-12-10 372.50 379.25 371.75 377.00   5.50 377.25   2543
+## 4 2015-12-09 370.75 376.75 368.50 372.25   1.75 371.75   3217
+## 5 2015-12-08 369.00 371.00 367.25 370.25   1.50 370.00   2947
+## 6 2015-12-07 375.75 376.00 368.00 368.25   7.75 368.50   3271
+##   Prev..Day.Open.Interest
+## 1                     816
+## 2                    2474
+## 3                    4444
+## 4                    6411
+## 5                    7935
+## 6                    9503</code></pre>
+<p>Note that this is the same data we manually downloaded before. To download a different data set, you just need to adjust the URL in the <code>getURL()</code> function to point to the right data set. Note the last two components of the URL, <code>CME</code> and <code>CZ2015.csv</code> match the “Quandl Code” in the top right corner of <a href="https://quandl.com">Quandl.com</a>.</p>
+<p>For example, if you search on the <a href="https://quandl.com">Quandl.com</a> webpage for <code>CME/SX2015</code> you can find the November 2015 CME soybeans futures contract and see that the “Quandl Code” for <code>SX2015</code> is <code>CME/SX2015</code>. Now if we adjust our API call above to point to November 2015 soybeans, we will have that data as well.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SX2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/SX2015.csv&quot;</span>)
+SX2015 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text =</span> SX2015)
+
+<span class="kw">head</span>(SX2015)</code></pre></div>
+<pre><code>##         Date   Open   High    Low   Last Change Settle Volume
+## 1 2015-11-13 871.75 871.75 860.50 860.50  10.25 859.00    110
+## 2 2015-11-12 869.75 874.75 865.25 869.75   0.75 869.25    925
+## 3 2015-11-11 865.75 869.75 863.50 868.50   4.00 868.50    763
+## 4 2015-11-10 875.00 875.25 859.25 866.00   9.00 864.50   1241
+## 5 2015-11-09 872.00 877.25 871.25 874.00   2.25 873.50   2312
+## 6 2015-11-06 868.00 873.00 863.25 871.25   3.50 871.25   1327
+##   Open.Interest
+## 1            93
+## 2           978
+## 3          1997
+## 4          3313
+## 5          4324
+## 6          5260</code></pre>
+<p>And now use the API call to get December 2015 soft red winter wheat futures.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">WZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/WZ2015.csv&quot;</span>)
+WZ2015 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text =</span> WZ2015)
+
+<span class="kw">head</span>(WZ2015)</code></pre></div>
+<pre><code>##         Date   Open   High    Low   Last Change Settle Volume
+## 1 2015-12-14 488.00 490.50 488.00 488.75   5.00 487.75     15
+## 2 2015-12-11 487.50 491.25 480.00 480.50   1.75 482.75     46
+## 3 2015-12-10 478.50 487.75 476.75 487.75   6.50 484.50     32
+## 4 2015-12-09 469.75 479.75 469.75 476.00   7.25 478.00     36
+## 5 2015-12-08 471.00 471.75 466.50 470.25   0.50 470.75    134
+## 6 2015-12-07 474.75 474.75 471.25 471.25   1.00 470.25    284
+##   Open.Interest
+## 1            15
+## 2            67
+## 3            86
+## 4           174
+## 5           382
+## 6           346</code></pre>
+</div>
+<div id="usda-apis" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> USDA API’s</h3>
+<p>Some of the Services within the USDA provide API access to their data sets. The <a href="http://www.usda.gov/wps/portal/usda/usdahome?navid=data">USDA Open Data Catalog</a> is a collection of all the publicly avaiable USDA datasets. If you click on the links you will often just go to the web-frontend of a queryable database. However, there are two links at the top of the webpage that say ‘XML Version’ and ‘JSON Version’. These links are useful for accessing the API’s that will either allow you to download data directly into the R environment or reveals the URL that will automatically download the data in .csv or other useful format that is easily then imported into the R environment.</p>
+<!-- Feedgrains database available here. Historical balance sheet categories-->
+<!-- http://www.gipsa.usda.gov/fgis/exportgrain/CY2015.csv  URL format of GIPSA export inspections-->
+<p>The URL to use the USDA NASS API for <em>Corn Ave Prices Received</em> is not as simple as the Quandl API above.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> To use the USDA API’s you need to request and authentication code. This allows the USDA to keep track of who is accessing the data and make protect against attacks on the data servers. To request an API, click <em>obtain an API key</em> on the <a href="http://quickstats.nass.usda.gov/api" class="uri">http://quickstats.nass.usda.gov/api</a>. Then enter the requested information. You will receive an email with the API key. The code below will download the <em>Average Prices Recieved by Farmers</em> for <em>Corn</em> in <em>Iowa</em> from <em>1970</em> to the present.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IAPrice &lt;-<span class="st"> &#39;http://quickstats.nass.usda.gov/api/api_GET/?key=6E3544A2-95E5-3916-ACA4-8AAE9CA28130&amp;commodity_desc=CORN&amp;year__GE=1980&amp;state_alpha=IA&amp;format=CSV&amp;statisticcat_desc=PRICE%20RECEIVED&#39;</span>
+IAPrice &lt;-<span class="st"> </span><span class="kw">read.csv</span>(IAPrice)
+
+<span class="kw">head</span>(IAPrice, <span class="dv">10</span>)</code></pre></div>
+<pre><code>##    source_desc sector_desc  group_desc commodity_desc  class_desc
+## 1       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 2       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 3       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 4       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 5       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 6       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 7       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 8       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 9       SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+## 10      SURVEY       CROPS FIELD CROPS           CORN ALL CLASSES
+##         prodn_practice_desc util_practice_desc statisticcat_desc unit_desc
+## 1  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 2  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 3  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 4  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 5  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 6  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 7  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 8  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 9  ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+## 10 ALL PRODUCTION PRACTICES              GRAIN    PRICE RECEIVED    $ / BU
+##                                          short_desc domain_desc
+## 1  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 2  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 3  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 4  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 5  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 6  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 7  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 8  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 9  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+## 10 CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU       TOTAL
+##    domaincat_desc agg_level_desc state_ansi state_fips_code state_alpha
+## 1   NOT SPECIFIED          STATE         19              19          IA
+## 2   NOT SPECIFIED          STATE         19              19          IA
+## 3   NOT SPECIFIED          STATE         19              19          IA
+## 4   NOT SPECIFIED          STATE         19              19          IA
+## 5   NOT SPECIFIED          STATE         19              19          IA
+## 6   NOT SPECIFIED          STATE         19              19          IA
+## 7   NOT SPECIFIED          STATE         19              19          IA
+## 8   NOT SPECIFIED          STATE         19              19          IA
+## 9   NOT SPECIFIED          STATE         19              19          IA
+## 10  NOT SPECIFIED          STATE         19              19          IA
+##    state_name asd_code asd_desc county_ansi county_code county_name
+## 1        IOWA       NA       NA          NA          NA          NA
+## 2        IOWA       NA       NA          NA          NA          NA
+## 3        IOWA       NA       NA          NA          NA          NA
+## 4        IOWA       NA       NA          NA          NA          NA
+## 5        IOWA       NA       NA          NA          NA          NA
+## 6        IOWA       NA       NA          NA          NA          NA
+## 7        IOWA       NA       NA          NA          NA          NA
+## 8        IOWA       NA       NA          NA          NA          NA
+## 9        IOWA       NA       NA          NA          NA          NA
+## 10       IOWA       NA       NA          NA          NA          NA
+##    region_desc zip_5 watershed_code watershed_desc congr_district_code
+## 1           NA    NA              0             NA                  NA
+## 2           NA    NA              0             NA                  NA
+## 3           NA    NA              0             NA                  NA
+## 4           NA    NA              0             NA                  NA
+## 5           NA    NA              0             NA                  NA
+## 6           NA    NA              0             NA                  NA
+## 7           NA    NA              0             NA                  NA
+## 8           NA    NA              0             NA                  NA
+## 9           NA    NA              0             NA                  NA
+## 10          NA    NA              0             NA                  NA
+##    country_code  country_name location_desc year freq_desc begin_code
+## 1          9000 UNITED STATES          IOWA 2017   MONTHLY          1
+## 2          9000 UNITED STATES          IOWA 2017   MONTHLY          2
+## 3          9000 UNITED STATES          IOWA 2017   MONTHLY          3
+## 4          9000 UNITED STATES          IOWA 2017   MONTHLY          4
+## 5          9000 UNITED STATES          IOWA 2017   MONTHLY          5
+## 6          9000 UNITED STATES          IOWA 2016    ANNUAL          0
+## 7          9000 UNITED STATES          IOWA 2016   MONTHLY          1
+## 8          9000 UNITED STATES          IOWA 2016   MONTHLY          2
+## 9          9000 UNITED STATES          IOWA 2016   MONTHLY          3
+## 10         9000 UNITED STATES          IOWA 2016   MONTHLY          4
+##    end_code reference_period_desc week_ending           load_time Value
+## 1         1                   JAN          NA 2017-03-30 15:00:16  3.34
+## 2         2                   FEB          NA 2017-04-27 15:03:23  3.39
+## 3         3                   MAR          NA 2017-05-31 15:00:03  3.43
+## 4         4                   APR          NA 2017-06-29 15:05:42  3.34
+## 5         5                   MAY          NA 2017-06-29 15:05:42  3.39
+## 6         0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
+## 7         1                   JAN          NA 2017-02-28 15:05:23  3.55
+## 8         2                   FEB          NA 2017-03-30 15:00:16  3.48
+## 9         3                   MAR          NA 2017-04-27 15:03:23  3.46
+## 10        4                   APR          NA 2017-05-31 15:00:03  3.52
+##    CV....
+## 1      NA
+## 2      NA
+## 3      NA
+## 4      NA
+## 5      NA
+## 6      NA
+## 7      NA
+## 8      NA
+## 9      NA
+## 10     NA</code></pre>
+<p>Click on the <em>Environment</em> tab in RStudio and click <code>IAPrice</code> in the <em>Data</em> section. This will open up the data in RStudio’s data viewer. This is not quite as functional as Microsoft Excel, but it is handy to verify what you downloaded looks as you expect it to.</p>
+</div>
+</div>
+<div id="graphing-basics" class="section level2">
+<h2><span class="header-section-number">2.3</span> Graphing Basics</h2>
+<p>The final topic we will cover in this chapter is basic plotting. Above, we already used <code>qplot()</code> from the <code>ggplot2</code> package to plot a frequency chart. The function below, <code>plot()</code>, comes installed with base R, so no need to install any packages before calling the function. We will plot the corn price data we imported previously in the chapter. It should be stored as a variable called <code>CZ2015</code>. We will plot the <em>Settle</em> prices over time. The <code>plot()</code> function takes to arguments. It needs a variable to plot along the x-axis and a variable to plot along the y-axis. We will put <em>Date</em> along the x-axis and <em>Settle</em> prices along the y-axis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">library</span>(RCurl)
+CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
+
+<span class="kw">plot</span>(CZ2015$Dat, CZ2015$Settle)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">library</span>(RCurl)
+CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
+
+<span class="kw">plot</span>(CZ2015$Date, CZ2015$Settle)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>This plot is OK, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The <code>quantmod</code> package has become the most popular R package for charting. Go ahead and install it an load it into your library.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;xts&quot;</span>)
+<span class="kw">library</span>(quantmod)
+<span class="kw">library</span>(xts)</code></pre></div>
+<p>Now, lets plot December 2015 wheat prices that we imported earlier. To do this we will use the function <code>chartSeries()</code> from the <code>quantmod</code> package. It expects data to be a time series, and it expects to receive Open, High, Low, Close, and Volume.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
+WZ2015_chart &lt;-<span class="st"> </span><span class="kw">subset</span>(WZ2015, <span class="dt">select=</span> -<span class="kw">c</span>(Date, Change, Last, Open.Interest))      
+WZ2015_chart &lt;-<span class="st"> </span><span class="kw">xts</span>(WZ2015_chart, <span class="dt">order.by =</span> <span class="kw">as.Date</span>(WZ2015$Date))    
+<span class="kw">colnames</span>(WZ2015_chart)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;Close&quot;</span>    
+
+<span class="kw">chartSeries</span>(WZ2015_chart[<span class="st">&#39;2015-01-01/&#39;</span>], <span class="dt">type =</span> <span class="st">&quot;candlesticks&quot;</span>, <span class="dt">theme =</span> <span class="kw">chartTheme</span>(<span class="st">&quot;white&quot;</span>))</code></pre></div>
+<p>There is a lot going on in this code chunk, actually. Let us go through the details, but what we just did is pretty advanced so do not feel overwhelmed. This was mostly to show you what is possible with financial data. To give you some perspective, it took me about an hour to search around and get the details right.</p>
+<p>The three first lines are all prepping the data to put it into the format the <code>chartSeries()</code> function expects.</p>
+<ol style="list-style-type: decimal">
+<li>In the first line we removed the columns Date, Change, Last, Open.Interest because we need only Open, High, Low, Close.</li>
+<li>The second line does two things. It defines <code>WZ2015_chart</code> as an xts time series object, which is just a special class of object in R. It has attributes some functions written especially for time series data can utilize. The second argument of the <code>xts()</code> function uses <code>order.by</code> to indicate the <code>WZ2015$Date</code> variable should be used as the date index. and the <code>as.Date()</code> function puts the data in a proper format the <code>xts()</code> function recognizes.</li>
+<li>The third line changes the column named “Settle”, which is the 4th column to “Close”. This is because <code>chartSeries()</code> wants to see columns Open, High, Low, Close, and Volume.</li>
+</ol>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Documentation for the USDA NASS API can be found <a href="http://quickstats.nass.usda.gov/api" class="uri">http://quickstats.nass.usda.gov/api</a>. At this point, do not worry about understanding how to make sense of the documentation. This is simply a reference for your possible future use. I will provide all the correct URLs in the text.<a href="chapter-2-getting-started.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started-with-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

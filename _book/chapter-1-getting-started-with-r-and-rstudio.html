@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Companion to Price Analysis</title>
+  <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
+  <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+  <meta property="og:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  
+  <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+
+<meta name="author" content="Mindy L. Mallory">
+
+
+<meta name="date" content="2017-07-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="chapter-2-getting-started.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Chapter 1: Getting Started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#background"><i class="fa fa-check"></i><b>1.0.1</b> Background</a></li>
+<li class="chapter" data-level="1.0.2" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#download-r"><i class="fa fa-check"></i><b>1.0.2</b> Download R</a></li>
+<li class="chapter" data-level="1.0.3" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#download-rstudio"><i class="fa fa-check"></i><b>1.0.3</b> Download RStudio</a></li>
+<li class="chapter" data-level="1.0.4" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#orienation-to-the-rstudio-ide"><i class="fa fa-check"></i><b>1.0.4</b> Orienation to the RStudio IDE</a></li>
+<li class="chapter" data-level="1.0.5" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#basic-calculations"><i class="fa fa-check"></i><b>1.0.5</b> Basic Calculations</a></li>
+<li class="chapter" data-level="1.0.6" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#datatypes"><i class="fa fa-check"></i><b>1.0.6</b> Datatypes</a></li>
+<li class="chapter" data-level="1.0.7" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#install-and-load-a-package-into-the-library"><i class="fa fa-check"></i><b>1.0.7</b> Install and Load a Package into the Library</a></li>
+<li class="chapter" data-level="1.0.8" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#setting-up-a-project"><i class="fa fa-check"></i><b>1.0.8</b> Setting up a Project</a></li>
+<li class="chapter" data-level="1.0.9" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#other-resources-for-getting-started-with-r"><i class="fa fa-check"></i><b>1.0.9</b> Other Resources for Getting Started with R</a></li>
+<li class="chapter" data-level="1.0.10" data-path="chapter-1-getting-started-with-r-and-rstudio.html"><a href="chapter-1-getting-started-with-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.0.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html"><i class="fa fa-check"></i><b>2</b> Chapter 2: Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#data-import-from-files-on-your-hard-drive"><i class="fa fa-check"></i><b>2.1</b> Data Import From Files on Your Hard Drive</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-comma-separated-files"><i class="fa fa-check"></i><b>2.1.1</b> From Comma Separated Files</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-microsoft-excel"><i class="fa fa-check"></i><b>2.1.2</b> From Microsoft Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#working-with-apis"><i class="fa fa-check"></i><b>2.2</b> Working with API’s</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#quandls-api"><i class="fa fa-check"></i><b>2.2.1</b> Quandl’s API</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#usda-apis"><i class="fa fa-check"></i><b>2.2.2</b> USDA API’s</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#graphing-basics"><i class="fa fa-check"></i><b>2.3</b> Graphing Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><i class="fa fa-check"></i><b>3</b> Chapter 3: Fundamental Analysis and the Balance Sheet</a><ul>
+<li class="chapter" data-level="3.1" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html#estimate-trend-yield"><i class="fa fa-check"></i><b>3.1</b> Estimate Trend Yield</a></li>
+<li class="chapter" data-level="3.2" data-path="chapter-3-fundamental-analysis-and-the-balance-sheet.html"><a href="chapter-3-fundamental-analysis-and-the-balance-sheet.html#forecast-price-that-clears-the-market-based-on-the-balance-sheet"><i class="fa fa-check"></i><b>3.2</b> Forecast Price that Clears the Market Based on the Balance Sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html"><i class="fa fa-check"></i><b>4</b> Chapter 4: Forecasting Components of the Balance Sheet</a><ul>
+<li class="chapter" data-level="4.1" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-yield-based-on-crop-conditions"><i class="fa fa-check"></i><b>4.1</b> Forecast Yield Based on Crop Conditions</a></li>
+<li class="chapter" data-level="4.2" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecasting-ending-stocks"><i class="fa fa-check"></i><b>4.2</b> Forecasting Ending Stocks</a></li>
+<li class="chapter" data-level="4.3" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-carryout-based-on-estimated-elasticities-and-recent-prices"><i class="fa fa-check"></i><b>4.3</b> Forecast Carryout Based on Estimated Elasticities and Recent Prices</a></li>
+<li class="chapter" data-level="4.4" data-path="chapter-4-forecasting-components-of-the-balance-sheet.html"><a href="chapter-4-forecasting-components-of-the-balance-sheet.html#forecast-exports"><i class="fa fa-check"></i><b>4.4</b> Forecast Exports</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html"><i class="fa fa-check"></i><b>5</b> Chapter 5: The Markets Reaction to USDA Reports</a><ul>
+<li class="chapter" data-level="5.1" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html#explain-the-bbo-data-from-this-chapters-example"><i class="fa fa-check"></i><b>5.1</b> Explain the BBO Data from this Chapter’s Example</a></li>
+<li class="chapter" data-level="5.2" data-path="chapter-5-the-markets-reaction-to-usda-reports.html"><a href="chapter-5-the-markets-reaction-to-usda-reports.html#explain-the-source-code-from-this-chapters-figures"><i class="fa fa-check"></i><b>5.2</b> Explain the Source Code from this Chapter’s Figures</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><i class="fa fa-check"></i><b>6</b> Chapter 6: Forecasting Prices with Time-Series Econometric Techniques</a><ul>
+<li class="chapter" data-level="6.1" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#time-series-basics"><i class="fa fa-check"></i><b>6.1</b> Time Series Basics</a></li>
+<li class="chapter" data-level="6.2" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#single-market-models---arima"><i class="fa fa-check"></i><b>6.2</b> Single Market Models - ARIMA</a></li>
+<li class="chapter" data-level="6.3" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---var"><i class="fa fa-check"></i><b>6.3</b> Multiple Market Models - VAR</a></li>
+<li class="chapter" data-level="6.4" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---vecm"><i class="fa fa-check"></i><b>6.4</b> Multiple Market Models - VECM</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chapter-1-getting-started-with-r-and-rstudio" class="section level1">
+<h1><span class="header-section-number">1</span> Chapter 1: Getting Started with R and RStudio</h1>
+<p>In this chapter we will walk through a short introduction to R and RStudio. There are many free and comprehensive tutorials available on the web, so our focus here will be to introduce only the concepts and functionality that we need to get started with price analysis as quickly as possible. Readers who come to this book because they want to do price analysis professionally using R will probably want to go back and learn R in a more comprehensive way after they have finished <em>Commodity Price Analysis</em> and the <em>R Companion</em>. At the end of this chapter I list some excellent tutorials available for free on the web, and there are many more not listed here.</p>
+<div id="background" class="section level3">
+<h3><span class="header-section-number">1.0.1</span> Background</h3>
+<p>For history on the development of R, <a href="https://en.wikipedia.org/wiki/R_(programming_language)">Wikipedia</a> is probably the best source.</p>
+<blockquote>
+<p>R is a programming language and software environment for statistical computing and graphics. The R language is widely used among statisticians and data miners for developing statistical software and data analysis. … R is an implementation of the S programming language combined with lexical scoping semantics inspired by Scheme. S was created by John Chambers while at Bell Labs. There are some important differences, but much of the code written for S runs unaltered. R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is currently developed by the R Development Core Team, of which Chambers is a member. R is named partly after the first names of the first two R authors and partly as a play on the name of S. R is a GNU project. The source code for the R software environment is written primarily in C, Fortran, and R. R is freely available under the GNU General Public License, and pre-compiled binary versions are provided for various operating systems. R uses a command line interface; there are also several graphical front-ends for it. <a href="https://en.wikipedia.org/wiki/R_(programming_language)">Source: Wikipedia</a></p>
+</blockquote>
+<p>R as an open source project has been developed for decades now - which means people have written solutions and made them available for free for all kinds of problems related to statistics, programming, analytics and much more. Whatever kind of work you want to do related to statistics, there is a good chance someone has already done the hard work for you. All you have to do is find it and figure out how to implement it. For price analysis, we will cover the basics here.</p>
+<p>R by itself functions through a command line interface, which is not very convenient unless you are very technically inclined. Thankfully, there are several Graphical interfaces (called integrated development environments (IDE)) which makes life a lot easier. Some key functionality is available through clickable menus and viewing panes - just like the vast majority of software we are used to interacting with. My favorite is RStudio, and it is what we will use throughout this book.</p>
+<p>If you do not have any background programming, this may all sound daunting. Believe me, using R and RStudio is more accessible than it sounds. Let jump right in and get started. Since R and RStudio are open source, it is available for free to download.</p>
+</div>
+<div id="download-r" class="section level3">
+<h3><span class="header-section-number">1.0.2</span> Download R</h3>
+<p>Go to <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>, where the software is available for downloading.</p>
+<div class="figure">
+<img src="images/Rpojectsite.jpg" alt="Screenshot of r-project.org" />
+<p class="caption">Screenshot of r-project.org</p>
+</div>
+<p>Click “download R”, and scroll to a server mirror close to you. It does not matter much which one you choose; mirrors that are physically closer to you will produce downloads marginally faster, but if you are in the United States, for example, and you choose any of the mirrors located in the United States, you are not likely to notice a difference.</p>
+<p>When you click a mirror you will see a screen like the following:</p>
+<div class="figure">
+<img src="images/rdownload.jpg" alt="Screenshot of R Download Links" />
+<p class="caption">Screenshot of R Download Links</p>
+</div>
+<p>Click the link for your appropriate operating system, and click “base” on the next screen. Finally, if you are running windows you will see the following screen:</p>
+<div class="figure">
+<img src="images/windowsexe.jpg" alt="Screenshot of Windows .exe Download Links" />
+<p class="caption">Screenshot of Windows .exe Download Links</p>
+</div>
+<p>Click the <em>Download R 3.2.1 for Windows</em> link and run the installation file. Note that the release number may be different since new releases of the software periodically come out. Now you have R installed! Now we will install RStudio.</p>
+</div>
+<div id="download-rstudio" class="section level3">
+<h3><span class="header-section-number">1.0.3</span> Download RStudio</h3>
+<p>Downloading RStudio is a bit easier. Go to <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a> and the download links are on one page for all supported operating systems. Click your operating system and run the installation file.</p>
+<div class="figure">
+<img src="images/downloadrstudio.jpg" alt="Screenshot of RStudio Download Links" />
+<p class="caption">Screenshot of RStudio Download Links</p>
+</div>
+<p>Congratulations, you now have R and RStudio installed!</p>
+</div>
+<div id="orienation-to-the-rstudio-ide" class="section level3">
+<h3><span class="header-section-number">1.0.4</span> Orienation to the RStudio IDE</h3>
+<p>Now we will get acquainted with the RStudio IDE. First open RStudio. You will see the main window pane divided into three sections. The large pane on the left is called the <em>Console</em>. It is where commands can be executed within R. In the upper right corner is a pane with <em>Environment</em> and <em>History</em> tabs. The environment will show you what data or variables have been saved into the environment. Since we have not done anything, this is empty. In history tab, a record of every command given in the console is kept.</p>
+<p>The lower right hand corner holds several tabs: <em>Files</em>, <em>Plots</em>, <em>Packages</em>, <em>Help</em>, and <em>Viewer</em>. More on these things later.</p>
+<div class="figure">
+<img src="images/rstudio.PNG" alt="Screenshot of RStudio" />
+<p class="caption">Screenshot of RStudio</p>
+</div>
+<p>The power of R, is not in the line by line execution of commands, it is in writing scripts were commands can be stored and reused. In the upper left hand corner of RStudio, is an icon just below the <em>File</em> menu. Clicking it reveals a menu to open different kinds of script templates. Click it and choose <em>R Script</em>. The R script will open in the RStudio window and now there are four panes open. Let’s assign the value <code>2</code> to a variable called <code>x</code> and the value <code>3</code> to a variable called <code>y</code>. Then we will add them together and store the result as <code>z</code>. This is done by using the characters <code>&lt;-</code> together to assign the values to the variable names. Type the following into the R script.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span>
+y &lt;-<span class="st"> </span><span class="dv">3</span>
+z &lt;-<span class="st"> </span>x+y
+z</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Click on the <em>Environment</em> tab in the upper right hand corner. You will see <code>x, y, and z</code> and their values. In this book, notice that output from R is preceded by ‘##’. The hashtag symbol indicates comments to R, so anything to the right of a comment will not be evaluated. This facilitates copy and pasting from this document into the R console, since only the intended input will be evaluated.</p>
+<p>For the exercises that follow, type your commands into the R script file to save them for reference. In the top right of the script pane you see a button labeled ‘Run’. If you click it R will execute whatever line of code you are on. Pressing <code>Ctrl+Enter</code> does the same. If you click ‘Source’, just to the right of ‘Run’, R will execute the entire file.</p>
+<p>Please create a folder on your computer labeled ‘Chapter1’ and save this R script with the name Chapter1.R.</p>
+</div>
+<div id="basic-calculations" class="section level3">
+<h3><span class="header-section-number">1.0.5</span> Basic Calculations</h3>
+<p>In the Console type the following to get acquainted with performing arithmetic in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2+2</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span>*<span class="dv">7</span></code></pre></div>
+<pre><code>## [1] 42</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">12</span>/<span class="dv">4</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span>^<span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 1.414214</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 4.60517</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="fl">4.60517</span>)</code></pre></div>
+<pre><code>## [1] 99.99998</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">log</span>(<span class="dv">100</span>))</code></pre></div>
+<pre><code>## [1] 100</code></pre>
+</div>
+<div id="datatypes" class="section level3">
+<h3><span class="header-section-number">1.0.6</span> Datatypes</h3>
+<p>When you assign variables or load data into R, it is defined as one of several datatypes that have specific attributes. Some basic familiarity with R’s datatypes is necessary because all R functions expect the inputs to be of certain datatypes, and will not run if you give it a character when it is expecting an integer, for example.</p>
+<div id="numeric-integer-and-character-and-logical" class="section level4">
+<h4><span class="header-section-number">1.0.6.1</span> Numeric, Integer, and Character, and Logical</h4>
+<p>The first four are pretty straightforward. The <em>Numeric</em> datatype is for floating decimal, like 2.34. <em>Integer</em> variables must be whole numbers, and <em>Character</em> variables must be character strings like <code>&quot;Hello World&quot;</code>. Logicals are either <code>TRUE</code> or <code>FALSE</code>.</p>
+</div>
+<div id="vector" class="section level4">
+<h4><span class="header-section-number">1.0.6.2</span> Vector</h4>
+<p>A vector is a datatype that is a sequence of elements of the same type (enumerated above).</p>
+<p>A vector of numeric elements<br />
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.3</span>, <span class="dv">4</span>, <span class="dv">6</span>, -<span class="dv">10</span>)</code></pre></div>
+<p>The function, <code>c()</code> is the concatenate function. It just takes the elements between the comma’s and puts them together in one matrix.</p>
+<p>A vector of character elements<br />
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;My&quot;</span>, <span class="st">&quot;Name&quot;</span>, <span class="st">&quot;Is&quot;</span>)</code></pre></div>
+<p>A vector of logical elements<br />
+</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</code></pre></div>
+</div>
+<div id="matrix" class="section level4">
+<h4><span class="header-section-number">1.0.6.3</span> Matrix</h4>
+<p>Matrices are simply two dimensional vectors. Since we need to specify how the dimensions work, we will use a specific function for defining a matrix.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">2</span>)
+z</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">3</span>)
+z</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<p>It takes a vector one one dimension and allocates it to rows and columns as you define in the function arguments. The datatypes of the elements of a matrix must be the same type, as is true for vectors.</p>
+</div>
+<div id="list" class="section level4">
+<h4><span class="header-section-number">1.0.6.4</span> List</h4>
+<p>A list is kind of like a vector, except its elements can be of different types.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list1 &lt;-<span class="st"> </span><span class="kw">list</span>(x, y, z, <span class="dv">22</span>, <span class="st">&quot;R is really fun to learn&quot;</span>)
+list1</code></pre></div>
+<pre><code>## [[1]]
+## [1]   2.3   4.0   6.0 -10.0
+## 
+## [[2]]
+## [1] &quot;Hello&quot; &quot;My&quot;    &quot;Name&quot;  &quot;Is&quot;   
+## 
+## [[3]]
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## [[4]]
+## [1] 22
+## 
+## [[5]]
+## [1] &quot;R is really fun to learn&quot;</code></pre>
+</div>
+<div id="accessing-elements-of-vectors-matrices-and-lists-by-index" class="section level4">
+<h4><span class="header-section-number">1.0.6.5</span> Accessing elements of Vectors, Matrices, and Lists by Index</h4>
+<p>You access elements of a vector, matrix, or list by enclosing square brackets around the index number and placing it directly after the variable name. For example, <code>x</code> is a vector with 4 elements in it. To access the third element execute the following lines:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x</code></pre></div>
+<pre><code>## [1]   2.3   4.0   6.0 -10.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">3</span>]</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>For matrices you have to specify a row and column index. To get the element in row 1 column 2,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>List elements are accessed similarly.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list1[<span class="dv">3</span>]</code></pre></div>
+<pre><code>## [[1]]
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6</code></pre>
+</div>
+<div id="data.frame" class="section level4">
+<h4><span class="header-section-number">1.0.6.6</span> Data.frame</h4>
+<p>Data frames in R are conceptually analogous to data you are used to seeing organized in an excel spreadsheet. Variables are organized by column and observations are organized by row. The columns can be of different data types, but rows within one column must be the same. To illustrate we will use the mtcars data set, which was extracted from the 1974 Motor Trend Magazine and contains fuel consumption and 10 other variables. The data set is loaded automatically in the standard R illustration, and it the standard example data set most R tutorials utilize.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars</code></pre></div>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+<p>We will build our own data frame to build intuition. Suppose we ask 5 people (Peter, Paul, Mary, Simon, and Garfunkel), 3 questions. Height? Weight? Gender? Columns will represent the variables, and rows will represent individual answers to those questions. Two new functions appear in the code snippet below. <code>cbind()</code> takes vectors and binds them together side by side vertically to form columns of a matrix or table. The function, <code>data.table()</code> takes the rectangular object defined by the <code>cbind()</code> function and makes it into a data frame. The argument, <code>row.names=</code> defines the row names as our vector of character strings containing observation identifiers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">NAMES    &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Peter&quot;</span>, <span class="st">&quot;Paul&quot;</span>, <span class="st">&quot;Mary&quot;</span>, <span class="st">&quot;Simon&quot;</span>, <span class="st">&quot;Garfunkel&quot;</span>)
+Height   &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="fl">5.2</span>, <span class="fl">5.5</span>, <span class="fl">5.6</span>)                                          <span class="co"># I&#39;m making up this data...</span>
+Weight   &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">150</span>, <span class="dv">155</span>, <span class="dv">120</span>, <span class="dv">145</span>, <span class="dv">160</span>)
+Gender   &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>)
+
+DATA     &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">cbind</span>(Height, Weight, Gender), <span class="dt">row.names=</span> NAMES)
+DATA</code></pre></div>
+<pre><code>##           Height Weight Gender
+## Peter        5.8    150   Male
+## Paul         5.5    155   Male
+## Mary         5.2    120 Female
+## Simon        5.5    145   Male
+## Garfunkel    5.6    160   Male</code></pre>
+</div>
+<div id="subsetting" class="section level4">
+<h4><span class="header-section-number">1.0.6.7</span> Subsetting</h4>
+<p>There are many ways to slice and dice data frames. We will just introduce a couple of the most common here. First, if your data frame has column names you can subset off just one column of the data set by,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA$Weight</code></pre></div>
+<pre><code>## [1] 150 155 120 145 160
+## Levels: 120 145 150 155 160</code></pre>
+<p>Alternatively, you can just specify by column number,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA[,<span class="dv">2</span>]    <span class="co"># Weight is the second column</span></code></pre></div>
+<pre><code>## [1] 150 155 120 145 160
+## Levels: 120 145 150 155 160</code></pre>
+<p>If we want to only see Mary’s stats,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA[<span class="st">&#39;Mary&#39;</span>,]</code></pre></div>
+<pre><code>##      Height Weight Gender
+## Mary    5.2    120 Female</code></pre>
+<p>Or simply specify Mary’s row number,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA[<span class="dv">3</span>,]</code></pre></div>
+<pre><code>##      Height Weight Gender
+## Mary    5.2    120 Female</code></pre>
+</div>
+</div>
+<div id="install-and-load-a-package-into-the-library" class="section level3">
+<h3><span class="header-section-number">1.0.7</span> Install and Load a Package into the Library</h3>
+<p>Base R comes with a lot of functionality for statistical analysis, but the beauty of R lies in the packages contributed by the open source community. To see what happens if you try to use a function contained in a package you have not yet installed,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(DATA$Height)</code></pre></div>
+<p>Anytime you get this error message you know you need to install the proper package (or you have a typo!). If you simply Google ‘R qplot’ you will find the documentation for the function, including the package it is in. Try it for <code>qplot</code>. <code>...</code> so you found it is in a package called <code>ggplot2</code>, a powerful package for creating excellent graphics. To install this package and load it into your library, there are two methods.</p>
+<ol style="list-style-type: decimal">
+<li><p>In the lower right pane of RStudio, click the Packages tab, then click Install. Now type <code>ggplot2</code> and install. Now in the package tab, find <code>ggplot2</code> in the list of installed packages, click the check box. These actions installed <code>ggplot2</code> and loaded it into the library.</p></li>
+<li><p>Execute the following code:</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">library</span>(ggplot2)</code></pre></div>
+<p>Now try the code from above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">qplot</span>(DATA$Height)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Now we were able to make a frequency plot for height! It shows how many observations at each height there are in the data set.</p>
+</div>
+<div id="setting-up-a-project" class="section level3">
+<h3><span class="header-section-number">1.0.8</span> Setting up a Project</h3>
+<p>Initializing an R project is a good way to keep all of your files and directories straight. It is basically a bundle that saves an image of your entire R session, and sets the directories to a location you created it in. If you do not do this, you will inevitably lose track of what file directory R is pointing to. Then you will save data, figures, or images in unexpected locations. To get used to working with different projects, we will create a new project for each chapter of this book.</p>
+<ol style="list-style-type: decimal">
+<li>Click <code>File</code>, <code>New Project</code></li>
+<li>Choose to save the workspace if prompted.</li>
+<li>choose <code>Existing Directory</code> since we already created a Chapter1 folder and saved a script to it.</li>
+</ol>
+<p>Now you have an R project for Chapter 1 of this book. Make a new folder and save an R project to it for each Chapter in the text. We will be generating file and figures as exercises and arranging R projects this way will keep us organized.</p>
+</div>
+<div id="other-resources-for-getting-started-with-r" class="section level3">
+<h3><span class="header-section-number">1.0.9</span> Other Resources for Getting Started with R</h3>
+<p>This introduction to R is certainly not complete, but it is enough to get us up and running to start some basic price analysis in the next chapter. As I noted in the beginning of this chapter, there are so many free resources for learning R on the web. With the introduction in this chapter, you are well equipped to explore further if you are interested. There are a few of links to get you started.</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www.cyclismo.org/tutorial/R/input.html">R Tutorial</a> by Kelly Black, Department of Math at University of Georgia.</li>
+<li><a href="http://www.ats.ucla.edu/stat/r/">R Resources</a> by idre and UCLA.</li>
+<li><a href="http://ww2.coastal.edu/kingw/statistics/R-tutorials/">Tutorials</a> by William King, Coastal Carolina University</li>
+<li><a href="http://tryr.codeschool.com/levels/1/challenges/1">CodeSchool</a> by Code School</li>
+<li><a href="http://www.statmethods.net/">Quick-R</a> by Robert Kabacoff</li>
+</ol>
+<p>And there are so many more. Feel free to find and explore on your own.</p>
+</div>
+<div id="exercises" class="section level3">
+<h3><span class="header-section-number">1.0.10</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Create a fake data frame similar to our one named <code>DATA</code>, except this fake data should contain columns named <code>Age</code> (in years), <code>City</code> (note that these elements should be character strings), <code>Income</code> (in U.S. dollars), and <code>HSDiploma</code> (make this a logical, <code>TRUE</code> for yes and <code>FALSE</code> for no).</li>
+</ol>
+<p>Again, I want you to make up the data that goes in the data frame, we are checking here if you can build a data frame of similar structure to <code>DATA</code> from the example above. Save this code in your Chapter1.R script file.</p>
+<blockquote>
+<p>Be sure to ‘Save Workspace Image’ when you close the program!</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chapter-2-getting-started.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
