@@ -22,3 +22,22 @@ download:
 
 
 ![](images/cover.png)
+
+
+
+This book is a companion to [Price Analysis: A Fundamental Approach to the Study of Commodity Prices](http://mindymallory.github.io/PriceAnalysis/)
+
+
+# About the Author {-}
+
+Mindy L. Mallory is an associate professor in the Department of Agricultural and Consumer Economics at the University of Illinois in the College of ACES.
+
+Dr. Mallory’s research focuses on commodity markets and marketing issues, especially related to commodity futures and options markets. Topics of special interest include forecasting, liquidity costs, and price discovery. Additionally, NSF-funded research examines how portfolio theory from finance can be applied to help conservation groups make informed resource allocation decisions in the face of climate change.
+
+## Contact {-}
+Mindy L. Mallory  
+mallorym at illinois dot edu  
+[https://mindymallory.github.io/](https://mindymallory.github.io/)  
+[http://ace.illinois.edu/directory/mallorym](http://ace.illinois.edu/directory/mallorym)
+
+<p>&copy; Mindy L. Mallory 2017</p>
