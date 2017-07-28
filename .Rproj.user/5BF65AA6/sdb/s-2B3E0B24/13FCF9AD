@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "bookdown::gitbook:\n  css: style.css\n  split_by: chapter\n  config:\n    toc:\n      collapse: subsection\n      before: |\n        <li><a href=\"./\">R Companion to Price Analysis</a></li>\n      after: |\n        <ul>\n        <li><a href=\"https://github.com/rstudio/bookdown\" target=\"blank\">Published with bookdown</a> </li>\n        <li> &copy Mindy L. Mallory 2017</li>\n        </ul>\n      \nbookdown::pdf_book:\n  includes:\n    in_header: preamble.tex\n  latex_engine: xelatex\n  citation_package: natbib\nbookdown::epub_book:\n  stylesheet: style.css\n",
+    "created" : 1501261747567.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2346072380",
+    "id" : "13FCF9AD",
+    "lastKnownWriteTime" : 1501261780,
+    "last_content_update" : 1501261780895,
+    "path" : "P:/Github-Repos/R-Companion-Price-Analysis/_output.yml",
+    "project_path" : "_output.yml",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

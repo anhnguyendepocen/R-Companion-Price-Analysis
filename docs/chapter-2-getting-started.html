@@ -87,6 +87,7 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -99,6 +100,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">R Companion to Price Analysis</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting Started with R and RStudio</a><ul>
 <li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#download-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download R and RStudio</a></li>
@@ -145,6 +149,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.3" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---var"><i class="fa fa-check"></i><b>6.3</b> Multiple Market Models - VAR</a></li>
 <li class="chapter" data-level="6.4" data-path="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html"><a href="chapter-6-forecasting-prices-with-time-series-econometric-techniques.html#multiple-market-models---vecm"><i class="fa fa-check"></i><b>6.4</b> Multiple Market Models - VECM</a></li>
 </ul></li>
+<li class="divider"></li>
+<ul>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a> </li>
+<li> &copy Mindy L. Mallory 2017</li>
+</ul>
+
 </ul>
 
       </nav>
@@ -163,7 +173,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="chapter-2-getting-started" class="section level1">
-<h1><span class="header-section-number">2</span> Chapter 2: Getting Started</h1>
+<h1><span class="header-section-number">Chapter 2</span> Chapter 2: Getting Started</h1>
 <p>In Chapter 2 of <em>Price Analysis</em> we covered many sources for obtaining price and market fundamental data. In this chapter of the R companion, we will learn how to import these data in a variety of ways, including an API (application program interface) call. Using API’s greatly reduce the work and time required to get up and running with an analysis, and more entities provide API access all the time.</p>
 <p>We will keep the introduction here to the bare minimum required to get us up and running and performing price analysis.</p>
 <div id="data-import-from-files-on-your-hard-drive" class="section level2">
@@ -283,7 +293,7 @@ WZ2015 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span clas
 </div>
 <div id="usda-apis" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> USDA API’s</h3>
-<p>Some of the Services within the USDA provide API access to their data sets. The <a href="http://www.usda.gov/wps/portal/usda/usdahome?navid=data">USDA Open Data Catalog</a> is a collection of all the publicly avaiable USDA datasets. If you click on the links you will often just go to the web-frontend of a queryable database. However, there are two links at the top of the webpage that say ‘XML Version’ and ‘JSON Version’. These links are useful for accessing the API’s that will either allow you to download data directly into the R environment or reveals the URL that will automatically download the data in .csv or other useful format that is easily then imported into the R environment.</p>
+<p>Some of the Services within the USDA provide API access to their data sets. The <a href="http://www.usda.gov/wps/portal/usda/usdahome?navid=data">USDA Open Data Catalog</a> is a collection of all the publicly available USDA data sets. If you click on the links you will often just go to the web-front end of a query-able database. However, there are two links at the top of the webpage that say ‘XML Version’ and ‘JSON Version’. These links are useful for accessing the API’s that will either allow you to download data directly into the R environment or reveals the URL that will automatically download the data in .csv or other useful format that is easily then imported into the R environment.</p>
 <!-- Feedgrains database available here. Historical balance sheet categories-->
 <!-- http://www.gipsa.usda.gov/fgis/exportgrain/CY2015.csv  URL format of GIPSA export inspections-->
 <p>The URL to use the USDA NASS API for <em>Corn Ave Prices Received</em> is not as simple as the Quandl API above.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> To use the USDA API’s you need to request and authentication code. This allows the USDA to keep track of who is accessing the data and make protect against attacks on the data servers. To request an API, click <em>obtain an API key</em> on the <a href="http://quickstats.nass.usda.gov/api" class="uri">http://quickstats.nass.usda.gov/api</a>. Then enter the requested information. You will receive an email with the API key. The code below will download the <em>Average Prices Recieved by Farmers</em> for <em>Corn</em> in <em>Iowa</em> from <em>1970</em> to the present.</p>
@@ -404,7 +414,7 @@ CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class=
 CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
 
 <span class="kw">plot</span>(CZ2015$Date, CZ2015$Settle)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="Chapter2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>This plot is OK, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The <code>quantmod</code> package has become the most popular R package for charting. Go ahead and install it an load it into your library.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>)
 <span class="kw">install.packages</span>(<span class="st">&quot;xts&quot;</span>)
@@ -424,7 +434,7 @@ WZ2015_chart &lt;-<span class="st"> </span><span class="kw">xts</span>(WZ2015_ch
 <li>The second line does two things. It defines <code>WZ2015_chart</code> as an xts time series object, which is just a special class of object in R. It has attributes some functions written especially for time series data can utilize. The second argument of the <code>xts()</code> function uses <code>order.by</code> to indicate the <code>WZ2015$Date</code> variable should be used as the date index. and the <code>as.Date()</code> function puts the data in a proper format the <code>xts()</code> function recognizes.</li>
 <li>The third line changes the column named “Settle”, which is the 4th column to “Close”. This is because <code>chartSeries()</code> wants to see columns Open, High, Low, Close, and Volume.</li>
 </ol>
-<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="Chapter2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 
 </div>
 </div>
