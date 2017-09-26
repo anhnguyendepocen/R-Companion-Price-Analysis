@@ -101,6 +101,29 @@ library(RCurl)
 ```
 
 
+```
+## Warning: package 'Quandl' was built under R version 3.3.3
+```
+
+```
+## Loading required package: xts
+```
+
+```
+## Loading required package: zoo
+```
+
+```
+## 
+## Attaching package: 'zoo'
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+```
+
 
 ### Quandl's API
 
@@ -290,22 +313,22 @@ head(IAPrice, 10)
 ## 3          9000 UNITED STATES          IOWA 2017   MONTHLY          3
 ## 4          9000 UNITED STATES          IOWA 2017   MONTHLY          4
 ## 5          9000 UNITED STATES          IOWA 2017   MONTHLY          5
-## 6          9000 UNITED STATES          IOWA 2016    ANNUAL          0
-## 7          9000 UNITED STATES          IOWA 2016   MONTHLY          1
-## 8          9000 UNITED STATES          IOWA 2016   MONTHLY          2
-## 9          9000 UNITED STATES          IOWA 2016   MONTHLY          3
-## 10         9000 UNITED STATES          IOWA 2016   MONTHLY          4
+## 6          9000 UNITED STATES          IOWA 2017   MONTHLY          6
+## 7          9000 UNITED STATES          IOWA 2017   MONTHLY          7
+## 8          9000 UNITED STATES          IOWA 2016    ANNUAL          0
+## 9          9000 UNITED STATES          IOWA 2016   MONTHLY          1
+## 10         9000 UNITED STATES          IOWA 2016   MONTHLY          2
 ##    end_code reference_period_desc week_ending           load_time Value
 ## 1         1                   JAN          NA 2017-03-30 15:00:16  3.34
 ## 2         2                   FEB          NA 2017-04-27 15:03:23  3.39
 ## 3         3                   MAR          NA 2017-05-31 15:00:03  3.43
 ## 4         4                   APR          NA 2017-06-29 15:05:42  3.34
-## 5         5                   MAY          NA 2017-06-29 15:05:42  3.39
-## 6         0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
-## 7         1                   JAN          NA 2017-02-28 15:05:23  3.55
-## 8         2                   FEB          NA 2017-03-30 15:00:16  3.48
-## 9         3                   MAR          NA 2017-04-27 15:03:23  3.46
-## 10        4                   APR          NA 2017-05-31 15:00:03  3.52
+## 5         5                   MAY          NA 2017-07-31 15:00:20  3.39
+## 6         6                   JUN          NA 2017-08-30 15:00:23  3.35
+## 7         7                   JUL          NA 2017-08-30 15:00:23  3.40
+## 8         0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
+## 9         1                   JAN          NA 2017-02-28 15:05:23  3.55
+## 10        2                   FEB          NA 2017-03-30 15:00:16  3.48
 ##    CV....
 ## 1      NA
 ## 2      NA
@@ -349,7 +372,7 @@ CZ2015 <- getURL("https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv")
 plot(CZ2015$Date, CZ2015$Settle)
 ```
 
-<img src="Chapter2_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="Chapter2_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 This plot is OK, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The `quantmod` package has become the most popular R package for charting. Go ahead and install it an load it into your library. 
 
@@ -383,4 +406,4 @@ The three first lines are all prepping the data to put it into the format the `c
 2. The second line does two things. It defines `WZ2015_chart` as an xts time series object, which is just a special class of object in R. It has attributes some functions written especially for time series data can utilize. The second argument of the `xts()` function uses `order.by` to indicate the `WZ2015$Date` variable should be used as the date index. and the `as.Date()` function puts the data in a proper format the `xts()` function recognizes. 
 3. The third line changes the column named "Settle", which is the 4th column to "Close". This is because `chartSeries()` wants to see columns Open, High, Low, Close, and Volume. 
 
-<img src="Chapter2_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="Chapter2_files/figure-html/unnamed-chunk-14-1.png" width="672" />

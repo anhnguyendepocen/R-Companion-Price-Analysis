@@ -3,7 +3,7 @@ title: "R Companion to Price Analysis"
 author: "Mindy L. Mallory"
 description: "This book is a companion to 'Price Analysis: A Fundamental Approach to the Study of Commodity Prices'. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA."
 cover-image: "images/cover.png"
-date: "2017-07-28"
+date: "2017-09-26"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

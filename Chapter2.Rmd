@@ -69,6 +69,12 @@ install.packages("RCurl")
 library(RCurl)
 ```
 
+```{r, echo = FALSE}
+# install.packages("Quandl")
+library(Quandl)
+Quandl.api_key("otkcuWHb5hYFTXTsiMds")
+
+```
 
 
 ### Quandl's API

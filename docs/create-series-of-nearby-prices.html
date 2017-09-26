@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Companion to Price Analysis</title>
+  <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
+  <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+  <meta property="og:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  
+  <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+
+<meta name="author" content="Mindy L. Mallory">
+
+
+<meta name="date" content="2017-09-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chapter-2-getting-started.html">
+<link rel="next" href="time-series-workflow.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Companion to Price Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a><ul>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting Started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#download-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#the-rstudio-iintegrated-development-environment-ide"><i class="fa fa-check"></i><b>1.2</b> The RStudio Iintegrated Development Environment (IDE)</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#basic-calculations"><i class="fa fa-check"></i><b>1.3</b> Basic Calculations</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#datatypes"><i class="fa fa-check"></i><b>1.4</b> Datatypes</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#accessing-elements-of-vectors-matrices-and-lists-by-index"><i class="fa fa-check"></i><b>1.5</b> Accessing elements of Vectors, Matrices, and Lists by Index</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#data.frame"><i class="fa fa-check"></i><b>1.6</b> Data.frame</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#subsetting"><i class="fa fa-check"></i><b>1.6.1</b> Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#install-and-load-a-package-into-the-library"><i class="fa fa-check"></i><b>1.7</b> Install and Load a Package into the Library</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-a-project"><i class="fa fa-check"></i><b>1.8</b> Setting up a Project</a></li>
+<li class="chapter" data-level="1.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#other-resources-for-getting-started-with-r"><i class="fa fa-check"></i><b>1.9</b> Other Resources for Getting Started with R</a></li>
+<li class="chapter" data-level="1.10" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html"><i class="fa fa-check"></i><b>2</b> Chapter 2: Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#data-import-from-files-on-your-hard-drive"><i class="fa fa-check"></i><b>2.1</b> Data Import From Files on Your Hard Drive</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-comma-separated-files"><i class="fa fa-check"></i><b>2.1.1</b> From Comma Separated Files</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-microsoft-excel"><i class="fa fa-check"></i><b>2.1.2</b> From Microsoft Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#working-with-apis"><i class="fa fa-check"></i><b>2.2</b> Working with API’s</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#quandls-api"><i class="fa fa-check"></i><b>2.2.1</b> Quandl’s API</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#usda-apis"><i class="fa fa-check"></i><b>2.2.2</b> USDA API’s</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#graphing-basics"><i class="fa fa-check"></i><b>2.3</b> Graphing Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html"><i class="fa fa-check"></i><b>3</b> Create Series of Nearby Prices</a><ul>
+<li class="chapter" data-level="3.1" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html#markets-covered"><i class="fa fa-check"></i><b>3.1</b> Markets Covered</a></li>
+<li class="chapter" data-level="3.2" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html#the-script"><i class="fa fa-check"></i><b>3.2</b> The Script</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-series-workflow.html"><a href="time-series-workflow.html"><i class="fa fa-check"></i><b>4</b> Time-Series Workflow</a></li>
+<li class="chapter" data-level="5" data-path="testing-for-stationarity.html"><a href="testing-for-stationarity.html"><i class="fa fa-check"></i><b>5</b> Testing for Stationarity</a></li>
+<li class="chapter" data-level="6" data-path="single-market-models-arma.html"><a href="single-market-models-arma.html"><i class="fa fa-check"></i><b>6</b> Single Market Models (ARMA)</a></li>
+<li class="chapter" data-level="7" data-path="multi-market-models-var.html"><a href="multi-market-models-var.html"><i class="fa fa-check"></i><b>7</b> Multi-Market Models VAR</a></li>
+<li class="chapter" data-level="8" data-path="multi-market-models-vecm.html"><a href="multi-market-models-vecm.html"><i class="fa fa-check"></i><b>8</b> Multi-Market Models VECM</a></li>
+<li class="divider"></li>
+<ul>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a> </li>
+<li> &copy Mindy L. Mallory 2017</li>
+</ul>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="create-series-of-nearby-prices" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Create Series of Nearby Prices</h1>
+<p>One of the most common tasks that we do is examine a series of nearby futures prices. Historical data for futures prices is readily available, but series of nearby prices are often behind a paywall. Peicing together a nearby series on your own by hand is tedious and error prone. The script found at</p>
+<p><a href="https://github.com/mindymallory/RollFutures" class="uri">https://github.com/mindymallory/RollFutures</a></p>
+<p>does this programmatically. It fetches the appropriate contracts from <a href="https://www.quandl.com/">Quandl.com</a>, and then identifies the nearby contract. The nearby is rolled to the first deferred when volume in the first deferred overtakes volume in the nearby. Hu et al. <span class="citation">(<a href="#ref-hu2017">2017</a>)</span> showed that price discovery typically moves to the first deferred contract when it’s volume surpasses the nearby, so that is the method of rolling employed here.</p>
+<div id="markets-covered" class="section level2">
+<h2><span class="header-section-number">3.1</span> Markets Covered</h2>
+<p>This script will pull corn, soybeans, KC wheat, Chicago wheat, and crude oil.</p>
+</div>
+<div id="the-script" class="section level2">
+<h2><span class="header-section-number">3.2</span> The Script</h2>
+<p>Before you begin running the script, make sure you have created a new folder for you project and create a new R project. This will make all the working directories correct. See <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">this</a> for details.</p>
+<p>First, install and load the required packages. Note that you will need to go to <a href="https://www.quandl.com/">Quandl.com</a> and sign up for a free account and get an api key. Place it inside the quotes in the <code>Quandl.api.key()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;Quandl&quot;)</span>
+<span class="co"># install.packages(&quot;plyr&quot;)</span>
+<span class="co"># install.packages(&quot;tidyr&quot;)</span>
+<span class="co"># install.packages(&quot;ggplot2&quot;)</span>
+<span class="kw">library</span>(Quandl)
+<span class="kw">library</span>(plyr)
+<span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(ggplot2)
+
+<span class="co">#Quandl.api_key(&quot;YourAPIKeyHERE&quot;)</span></code></pre></div>
+<p>Next, initialize the parameters how you want. Choose the start and end date you need for your data. Then modify the <code>c_code</code> line to choose the correct commodity. <code>c_code=2</code> is shown so this will pull soybeans data. If you choose something else you need to comment the <code>contracts &lt;-</code> line for soybeans and uncomment the line for the commodity you want. The letters correspond to the listed contract months for each commodity. E.g, <code>Z</code> is for December.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">start &lt;-<span class="st"> </span><span class="dv">2015</span>
+end &lt;-<span class="st"> </span><span class="dv">2017</span>
+c_code &lt;-<span class="st"> </span><span class="dv">2</span>
+commodity_code &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;W&quot;</span>, <span class="st">&quot;KW&quot;</span>, <span class="st">&quot;CL&quot;</span>)
+<span class="co"># #C</span>
+<span class="co"># contracts &lt;- c(&#39;H&#39;, &#39;K&#39;, &#39;N&#39;, &#39;U&#39;, &#39;Z&#39;)</span>
+<span class="co">#S</span>
+contracts &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&#39;F&#39;</span>, <span class="st">&#39;H&#39;</span>, <span class="st">&#39;K&#39;</span>, <span class="st">&#39;N&#39;</span>, <span class="st">&#39;Q&#39;</span>, <span class="st">&#39;U&#39;</span>, <span class="st">&#39;X&#39;</span>)
+<span class="co"># #W</span>
+<span class="co"># contracts &lt;- c( &#39;H&#39;, &#39;K&#39;, &#39;N&#39;, &#39;U&#39;, &#39;Z&#39;)</span>
+<span class="co"># #KW</span>
+<span class="co"># contracts &lt;- c( &#39;H&#39;, &#39;K&#39;, &#39;N&#39;, &#39;U&#39;, &#39;Z&#39;)</span>
+<span class="co"># #CL</span>
+<span class="co"># contracts &lt;- c( &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;J&#39;, &#39;K&#39;, &#39;M&#39;, &#39;N&#39;, &#39;Q&#39;, &#39;U&#39;, &#39;V&#39;, &#39;X&#39;, &#39;Z&#39;)</span></code></pre></div>
+<p>The next portion of code defines a list and then uses the <code>Quandl()</code> function to fetch data from <a href="Quandl.com" class="uri">Quandl.com</a>. Notice we use the <code>paste0()</code> function to buld the correct commodity code to give to the Quandl api.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">years &lt;-<span class="st"> </span><span class="kw">seq</span>(start, end, <span class="dt">by =</span><span class="dv">1</span>)
+data &lt;-<span class="st"> </span><span class="kw">list</span>()
+k &lt;-<span class="st"> </span><span class="dv">1</span>
+
+for (i in start:end){
+  for (j in <span class="dv">1</span>:<span class="kw">length</span>(contracts)){
+    MyData =<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">Quandl</span>(<span class="kw">paste0</span>(<span class="st">&quot;CME/&quot;</span>, commodity_code[c_code], contracts[j], years[i-start +<span class="dv">1</span>])), <span class="kw">paste0</span>(contracts[j], <span class="st">&#39;-&#39;</span>, years[i-start<span class="dv">+1</span>], <span class="st">&#39;-Settle&#39;</span>), <span class="kw">paste0</span>(contracts[j], <span class="st">&#39;-&#39;</span>, years[i-start<span class="dv">+1</span>], <span class="st">&#39;-Volume&#39;</span>))
+    data[[k]] &lt;-<span class="st"> </span>MyData
+    k &lt;-<span class="st"> </span>k<span class="dv">+1</span>
+    <span class="co"># To keep raw data files uncomment this line. </span>
+    <span class="co"># write.csv(MyData, file = paste0(&quot;data-download/&quot;, contracts[j], years[i-start +1], &quot;.csv&quot;))</span>
+  }
+}</code></pre></div>
+<p>Then the list is converted to a dataframe with the <code>ldply()</code> function. Here we also separate out the <code>settle</code> and <code>volume</code> and stack them vertically with <code>rbind</code> so that the contract info can be stored as a single factor variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA &lt;-<span class="st"> </span><span class="kw">ldply</span>(data, rbind)
+DATA &lt;-<span class="st"> </span>DATA[, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">10</span>, <span class="dv">11</span>)]
+DATA &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(DATA)
+<span class="kw">colnames</span>(DATA) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Settle&#39;</span>, <span class="st">&#39;Volume&#39;</span>, <span class="st">&#39;Contract.Settle&#39;</span>, <span class="st">&#39;Contract.Volume&#39;</span>)
+
+settle &lt;-<span class="st"> </span>DATA[, <span class="kw">c</span>(<span class="st">&quot;Date&quot;</span>, <span class="st">&quot;Contract.Settle&quot;</span>, <span class="st">&quot;Settle&quot;</span>)]
+volume &lt;-<span class="st"> </span>DATA[, <span class="kw">c</span>(<span class="st">&quot;Date&quot;</span>, <span class="st">&quot;Contract.Volume&quot;</span>, <span class="st">&quot;Volume&quot;</span>)]
+<span class="kw">colnames</span>(settle) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Contract&#39;</span>, <span class="st">&#39;Value&#39;</span>)
+<span class="kw">colnames</span>(volume) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Contract&#39;</span>, <span class="st">&#39;Value&#39;</span>)
+DATA &lt;-<span class="st"> </span><span class="kw">rbind</span>(settle, volume)
+<span class="kw">colnames</span>(DATA) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Date&#39;</span>, <span class="st">&#39;Contract&#39;</span>, <span class="st">&#39;Value&#39;</span>)</code></pre></div>
+<p>In the next lines we use the <code>spread</code> function to take the <a href="http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/">long data set to a wide dataset</a> where each row contains a date with all the contracts trading in separate columns for settle price and volume. We print the ‘long’ dataset before applying <code>spread</code> and the ‘wide’ dataset after to give a sense what the code is doing. The last line trims the dataset to your requested dates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(DATA)</code></pre></div>
+<pre><code>##         Date      Contract  Value
+## 1 2015-01-14 F-2015-Settle  992.0
+## 2 2015-01-13 F-2015-Settle 1000.0
+## 3 2015-01-12 F-2015-Settle 1013.0
+## 4 2015-01-09 F-2015-Settle 1051.0
+## 5 2015-01-08 F-2015-Settle 1045.0
+## 6 2015-01-07 F-2015-Settle 1052.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA &lt;-<span class="st"> </span><span class="kw">spread</span>(DATA, Contract, Value)
+DATA &lt;-<span class="st"> </span><span class="kw">as.xts</span>(DATA[, -<span class="dv">1</span>], <span class="dt">order.by =</span> DATA[, <span class="dv">1</span>])
+DATA &lt;-<span class="st"> </span>DATA[<span class="kw">paste0</span>(start,<span class="st">&#39;/&#39;</span>,end)]
+<span class="kw">head</span>(DATA)</code></pre></div>
+<pre><code>##            F-2015-Settle H-2015-Settle K-2015-Settle N-2015-Settle
+## 2015-01-02        1002.0        1007.0        1014.5        1020.0
+## 2015-01-05        1039.5        1045.5        1052.0        1057.0
+## 2015-01-06        1051.0        1055.5        1061.0        1066.0
+## 2015-01-07        1052.5        1056.5        1061.0        1065.5
+## 2015-01-08        1045.0        1048.5        1053.5        1058.5
+## 2015-01-09        1051.0        1052.5        1057.0        1062.0
+##            Q-2015-Settle U-2015-Settle X-2015-Settle F-2016-Settle
+## 2015-01-02        1020.5        1004.0         993.5         998.0
+## 2015-01-05        1055.5        1037.5        1025.0        1029.5
+## 2015-01-06        1063.0        1043.0        1028.5        1033.5
+## 2015-01-07        1062.5        1041.0        1025.0        1029.0
+## 2015-01-08        1056.5        1034.5        1017.0        1022.5
+## 2015-01-09        1059.0        1037.5        1019.0        1024.0
+##            H-2016-Settle K-2016-Settle N-2016-Settle Q-2016-Settle
+## 2015-01-02        1002.0        1004.5        1008.5        1007.5
+## 2015-01-05        1034.5        1036.5        1039.0        1037.5
+## 2015-01-06        1038.5        1040.0        1043.0        1041.5
+## 2015-01-07        1034.5        1036.0        1039.0        1037.5
+## 2015-01-08        1027.0        1029.5        1032.0        1030.5
+## 2015-01-09        1029.5        1031.0        1035.5        1033.0
+##            U-2016-Settle X-2016-Settle F-2017-Settle H-2017-Settle
+## 2015-01-02         992.5         985.0         985.5         985.5
+## 2015-01-05        1022.5        1008.0        1008.5        1008.5
+## 2015-01-06        1026.5        1012.5        1013.0        1013.0
+## 2015-01-07        1019.5        1001.0        1001.5        1001.5
+## 2015-01-08        1012.5         992.0         995.0         995.5
+## 2015-01-09        1015.0         995.5         997.5         998.0
+##            K-2017-Settle N-2017-Settle Q-2017-Settle U-2017-Settle
+## 2015-01-02         991.5        1006.5        1006.5        1006.5
+## 2015-01-05        1018.5        1029.0        1029.0        1029.0
+## 2015-01-06        1018.0        1033.5        1033.5        1033.5
+## 2015-01-07        1011.5        1022.0        1022.0        1022.0
+## 2015-01-08        1001.5        1013.5        1013.5        1013.5
+## 2015-01-09        1006.5        1017.0        1017.0        1017.0
+##            X-2017-Settle F-2015-Volume H-2015-Volume K-2015-Volume
+## 2015-01-02         979.5          9191         63624         15351
+## 2015-01-05        1001.5          7334        117101         20283
+## 2015-01-06        1005.5          3997        100146         24102
+## 2015-01-07         993.5          3865         78827         23459
+## 2015-01-08         985.0          4033         72445         19887
+## 2015-01-09         987.5          3320         64335         18130
+##            N-2015-Volume Q-2015-Volume U-2015-Volume X-2015-Volume
+## 2015-01-02         13690           472           201          6484
+## 2015-01-05         19915          1306           185         10079
+## 2015-01-06         21067           413           215          9464
+## 2015-01-07         23225           607           313         10202
+## 2015-01-08         14560           614           239          8110
+## 2015-01-09         14016           730           297          8428
+##            F-2016-Volume H-2016-Volume K-2016-Volume N-2016-Volume
+## 2015-01-02            89            28             0             1
+## 2015-01-05           121            34            10             1
+## 2015-01-06           102            51            16            23
+## 2015-01-07           126            69            34            21
+## 2015-01-08           437           121            48            96
+## 2015-01-09           323            65             4             1
+##            Q-2016-Volume U-2016-Volume X-2016-Volume F-2017-Volume
+## 2015-01-02             0             0            38             0
+## 2015-01-05             0             0            69             0
+## 2015-01-06             0             0            35             0
+## 2015-01-07             0             0            57             0
+## 2015-01-08             0             0            42             0
+## 2015-01-09             0             0            20             0
+##            H-2017-Volume K-2017-Volume N-2017-Volume Q-2017-Volume
+## 2015-01-02             0             0             1             0
+## 2015-01-05             0             0             0             0
+## 2015-01-06             0             0             0             0
+## 2015-01-07             0             0             0             0
+## 2015-01-08             0             0             0             0
+## 2015-01-09             0             0             0             0
+##            U-2017-Volume X-2017-Volume
+## 2015-01-02             0             0
+## 2015-01-05             0             1
+## 2015-01-06             0             0
+## 2015-01-07             0             0
+## 2015-01-08             0             0
+## 2015-01-09             0             0</code></pre>
+<p>Now, we use the <code>apply</code> function to apply <code>which.max</code> to every row. This delivers the index of which column takes the maximum value. Since we only identified the volume columns, this will identify the column with maximum volume. Once we have all these indices, we can build a series of nearby prices by using the index to pick out the contracts’ settle price that had the maximum volume for each date.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw">apply</span>(DATA[, (<span class="kw">length</span>(contracts)*<span class="kw">length</span>(years)+<span class="dv">1</span>):<span class="kw">dim</span>(DATA)[<span class="dv">2</span>]], <span class="dv">1</span>, which.max)
+
+nearby &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span> <span class="st">&quot;numeric&quot;</span>, <span class="dt">length =</span> <span class="kw">length</span>(temp))  
+for (i in <span class="dv">1</span>:<span class="kw">length</span>(temp)){
+nearby[i] &lt;-<span class="st"> </span>DATA[i, temp[i]]
+}
+DATA$Nearby &lt;-<span class="st"> </span>nearby
+
+<span class="kw">head</span>(DATA$Nearby)</code></pre></div>
+<pre><code>##            Nearby
+## 2015-01-02 1007.0
+## 2015-01-05 1045.5
+## 2015-01-06 1055.5
+## 2015-01-07 1056.5
+## 2015-01-08 1048.5
+## 2015-01-09 1052.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g &lt;-<span class="st"> </span><span class="kw">autoplot</span>(DATA$Nearby)
+g</code></pre></div>
+<p><img src="Chapter3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Now the dataset <code>DATA$Nearby</code> can be used in whatever analysis you want to do. If you prefer to write it to a .csv file in order to use it somewhere else do something like the following, but put in your own file path.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.zoo</span>(DATA$Nearby, <span class="dt">file =</span> <span class="st">&quot;YourFilePath.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</code></pre></div>
+
+</div>
+</div>
+<h3> Multi-Market Models VECM</h3>
+<div id="refs" class="references">
+<div id="ref-hu2017">
+<p>Zhepeng Hu, Philip Garcia, Mindy Mallory. 2017. “Measuring Price Discovery Between Nearby and Deferred Contracts in Storable and Non-Storable Commodity Futures Markets.” <em>Working Paper</em>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chapter-2-getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="time-series-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

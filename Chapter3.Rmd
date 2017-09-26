@@ -1,8 +1,142 @@
 
 
-# Chapter 3: Fundamental Analysis and the Balance Sheet
+# Create Series of Nearby Prices
 
-## Estimate Trend Yield
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
 
-## Forecast Price that Clears the Market Based on the Balance Sheet
+One of the most common tasks that we do is examine a series of nearby futures prices. Historical data for futures prices is readily available, but series of nearby prices are often behind a paywall. Peicing together a nearby series on your own by hand is tedious and error prone. The script found at   
+
+[https://github.com/mindymallory/RollFutures](https://github.com/mindymallory/RollFutures)  
+
+does this programmatically. It fetches the appropriate contracts from [Quandl.com](https://www.quandl.com/), and then identifies the nearby contract. The nearby is rolled to the first deferred when volume in the first deferred overtakes volume in the nearby. Hu et al. [-@hu2017] showed that price discovery typically moves to the first deferred contract when it's volume surpasses the nearby, so that is the method of rolling employed here. 
+
+## Markets Covered
+
+This script will pull corn, soybeans, KC wheat, Chicago wheat, and crude oil.   
+
+## The Script
+
+Before you begin running the script, make sure you have created a new folder for you project and create a new R project. This will make all the working directories correct. See [this](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for details.
+
+```{r, echo = FALSE}
+# install.packages("Quandl")
+library(Quandl)
+Quandl.api_key("otkcuWHb5hYFTXTsiMds")
+
+```
+
+First, install and load the required packages. Note that you will need to go to [Quandl.com](https://www.quandl.com/) and sign up for a free account and get an api key. Place it inside the quotes in the `Quandl.api.key()` function. 
+
+```{r, cache = TRUE}
+
+# install.packages("Quandl")
+# install.packages("plyr")
+# install.packages("tidyr")
+# install.packages("ggplot2")
+library(Quandl)
+library(plyr)
+library(tidyr)
+library(ggplot2)
+
+#Quandl.api_key("YourAPIKeyHERE")
+
+```
+
+Next, initialize the parameters how you want. Choose the start and end date you need for your data. Then modify the `c_code` line to choose the correct commodity. `c_code=2` is shown so this will pull soybeans data. If you choose something else you need to comment the `contracts <-` line for soybeans and uncomment the line for the commodity you want. The letters correspond to the listed contract months for each commodity. E.g, `Z` is for December. 
+
+
+```{r, cache = TRUE}
+start <- 2015
+end <- 2017
+c_code <- 2
+commodity_code <- c("C", "S", "W", "KW", "CL")
+# #C
+# contracts <- c('H', 'K', 'N', 'U', 'Z')
+#S
+contracts <- c( 'F', 'H', 'K', 'N', 'Q', 'U', 'X')
+# #W
+# contracts <- c( 'H', 'K', 'N', 'U', 'Z')
+# #KW
+# contracts <- c( 'H', 'K', 'N', 'U', 'Z')
+# #CL
+# contracts <- c( 'F', 'G', 'H', 'J', 'K', 'M', 'N', 'Q', 'U', 'V', 'X', 'Z')
+```
+
+The next portion of code defines a list and then uses the `Quandl()` function to fetch data from [Quandl.com](Quandl.com). Notice we use the `paste0()` function to buld the correct commodity code to give to the Quandl api. 
+
+```{r, cache = TRUE}
+years <- seq(start, end, by =1)
+data <- list()
+k <- 1
+
+for (i in start:end){
+  for (j in 1:length(contracts)){
+    MyData = cbind(Quandl(paste0("CME/", commodity_code[c_code], contracts[j], years[i-start +1])), paste0(contracts[j], '-', years[i-start+1], '-Settle'), paste0(contracts[j], '-', years[i-start+1], '-Volume'))
+    data[[k]] <- MyData
+    k <- k+1
+    # To keep raw data files uncomment this line. 
+    # write.csv(MyData, file = paste0("data-download/", contracts[j], years[i-start +1], ".csv"))
+  }
+}
+
+```
+
+
+Then the list is converted to a dataframe with the `ldply()` function. Here we also separate out the `settle` and `volume` and stack them vertically with `rbind` so that the contract info can be stored as a single factor variable.  
+
+```{r, cache = TRUE}
+DATA <- ldply(data, rbind)
+DATA <- DATA[, c(1,7,8,10, 11)]
+DATA <- as.data.frame(DATA)
+colnames(DATA) <- c('Date', 'Settle', 'Volume', 'Contract.Settle', 'Contract.Volume')
+
+settle <- DATA[, c("Date", "Contract.Settle", "Settle")]
+volume <- DATA[, c("Date", "Contract.Volume", "Volume")]
+colnames(settle) <- c('Date', 'Contract', 'Value')
+colnames(volume) <- c('Date', 'Contract', 'Value')
+DATA <- rbind(settle, volume)
+colnames(DATA) <- c('Date', 'Contract', 'Value')
+
+```
+
+
+In the next lines we use the `spread` function to take the [long data set to a wide dataset](http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/) where each row contains a date with all the contracts trading in separate columns for settle price and volume. We print the 'long' dataset before applying `spread` and the 'wide' dataset after to give a sense what the code is doing. The last line trims the dataset to your requested dates.
+
+```{r, cache = TRUE}
+head(DATA)
+DATA <- spread(DATA, Contract, Value)
+DATA <- as.xts(DATA[, -1], order.by = DATA[, 1])
+DATA <- DATA[paste0(start,'/',end)]
+head(DATA)
+```
+
+
+
+Now, we use the `apply` function to apply `which.max` to every row. This delivers the index of which column takes the maximum value. Since we only identified the volume columns, this will identify the column with maximum volume. Once we have all these indices, we can build a series of nearby prices by using the index to pick out the contracts' settle price that had the maximum volume for each date. 
+
+```{r, cache = TRUE}
+
+temp <- apply(DATA[, (length(contracts)*length(years)+1):dim(DATA)[2]], 1, which.max)
+
+nearby <- vector(mode= "numeric", length = length(temp))  
+for (i in 1:length(temp)){
+nearby[i] <- DATA[i, temp[i]]
+}
+DATA$Nearby <- nearby
+
+head(DATA$Nearby)
+
+g <- autoplot(DATA$Nearby)
+g
+
+```
+
+Now the dataset `DATA$Nearby` can be used in whatever analysis you want to do. If you prefer to write it to a .csv file in order to use it somewhere else do something like the following, but put in your own file path. 
+
+```{r, cache = TRUE, eval = FALSE}
+write.zoo(DATA$Nearby, file = "YourFilePath.csv", sep = ",")
+```
+
 

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Companion to Price Analysis</title>
+  <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
+  <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+  <meta property="og:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  
+  <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
+  <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
+
+<meta name="author" content="Mindy L. Mallory">
+
+
+<meta name="date" content="2017-09-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="single-market-models-arma.html">
+<link rel="next" href="multi-market-models-vecm.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Companion to Price Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the Author</a><ul>
+<li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting Started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#download-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Download R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#the-rstudio-iintegrated-development-environment-ide"><i class="fa fa-check"></i><b>1.2</b> The RStudio Iintegrated Development Environment (IDE)</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#basic-calculations"><i class="fa fa-check"></i><b>1.3</b> Basic Calculations</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#datatypes"><i class="fa fa-check"></i><b>1.4</b> Datatypes</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#accessing-elements-of-vectors-matrices-and-lists-by-index"><i class="fa fa-check"></i><b>1.5</b> Accessing elements of Vectors, Matrices, and Lists by Index</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#data.frame"><i class="fa fa-check"></i><b>1.6</b> Data.frame</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#subsetting"><i class="fa fa-check"></i><b>1.6.1</b> Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#install-and-load-a-package-into-the-library"><i class="fa fa-check"></i><b>1.7</b> Install and Load a Package into the Library</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-a-project"><i class="fa fa-check"></i><b>1.8</b> Setting up a Project</a></li>
+<li class="chapter" data-level="1.9" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#other-resources-for-getting-started-with-r"><i class="fa fa-check"></i><b>1.9</b> Other Resources for Getting Started with R</a></li>
+<li class="chapter" data-level="1.10" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html"><i class="fa fa-check"></i><b>2</b> Chapter 2: Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#data-import-from-files-on-your-hard-drive"><i class="fa fa-check"></i><b>2.1</b> Data Import From Files on Your Hard Drive</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-comma-separated-files"><i class="fa fa-check"></i><b>2.1.1</b> From Comma Separated Files</a></li>
+<li class="chapter" data-level="2.1.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#from-microsoft-excel"><i class="fa fa-check"></i><b>2.1.2</b> From Microsoft Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#working-with-apis"><i class="fa fa-check"></i><b>2.2</b> Working with API’s</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#quandls-api"><i class="fa fa-check"></i><b>2.2.1</b> Quandl’s API</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#usda-apis"><i class="fa fa-check"></i><b>2.2.2</b> USDA API’s</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="chapter-2-getting-started.html"><a href="chapter-2-getting-started.html#graphing-basics"><i class="fa fa-check"></i><b>2.3</b> Graphing Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html"><i class="fa fa-check"></i><b>3</b> Create Series of Nearby Prices</a><ul>
+<li class="chapter" data-level="3.1" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html#markets-covered"><i class="fa fa-check"></i><b>3.1</b> Markets Covered</a></li>
+<li class="chapter" data-level="3.2" data-path="create-series-of-nearby-prices.html"><a href="create-series-of-nearby-prices.html#the-script"><i class="fa fa-check"></i><b>3.2</b> The Script</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-series-workflow.html"><a href="time-series-workflow.html"><i class="fa fa-check"></i><b>4</b> Time-Series Workflow</a></li>
+<li class="chapter" data-level="5" data-path="testing-for-stationarity.html"><a href="testing-for-stationarity.html"><i class="fa fa-check"></i><b>5</b> Testing for Stationarity</a></li>
+<li class="chapter" data-level="6" data-path="single-market-models-arma.html"><a href="single-market-models-arma.html"><i class="fa fa-check"></i><b>6</b> Single Market Models (ARMA)</a></li>
+<li class="chapter" data-level="7" data-path="multi-market-models-var.html"><a href="multi-market-models-var.html"><i class="fa fa-check"></i><b>7</b> Multi-Market Models VAR</a></li>
+<li class="chapter" data-level="8" data-path="multi-market-models-vecm.html"><a href="multi-market-models-vecm.html"><i class="fa fa-check"></i><b>8</b> Multi-Market Models VECM</a></li>
+<li class="divider"></li>
+<ul>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a> </li>
+<li> &copy Mindy L. Mallory 2017</li>
+</ul>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multi-market-models-var" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Multi-Market Models VAR</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="single-market-models-arma.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multi-market-models-vecm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
