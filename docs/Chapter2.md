@@ -102,10 +102,6 @@ library(RCurl)
 
 
 ```
-## Warning: package 'Quandl' was built under R version 3.3.3
-```
-
-```
 ## Loading required package: xts
 ```
 
@@ -315,9 +311,9 @@ head(IAPrice, 10)
 ## 5          9000 UNITED STATES          IOWA 2017   MONTHLY          5
 ## 6          9000 UNITED STATES          IOWA 2017   MONTHLY          6
 ## 7          9000 UNITED STATES          IOWA 2017   MONTHLY          7
-## 8          9000 UNITED STATES          IOWA 2016    ANNUAL          0
-## 9          9000 UNITED STATES          IOWA 2016   MONTHLY          1
-## 10         9000 UNITED STATES          IOWA 2016   MONTHLY          2
+## 8          9000 UNITED STATES          IOWA 2017   MONTHLY          8
+## 9          9000 UNITED STATES          IOWA 2017   MONTHLY          9
+## 10         9000 UNITED STATES          IOWA 2016    ANNUAL          0
 ##    end_code reference_period_desc week_ending           load_time Value
 ## 1         1                   JAN          NA 2017-03-30 15:00:16  3.34
 ## 2         2                   FEB          NA 2017-04-27 15:03:23  3.39
@@ -325,10 +321,10 @@ head(IAPrice, 10)
 ## 4         4                   APR          NA 2017-06-29 15:05:42  3.34
 ## 5         5                   MAY          NA 2017-07-31 15:00:20  3.39
 ## 6         6                   JUN          NA 2017-08-30 15:00:23  3.35
-## 7         7                   JUL          NA 2017-08-30 15:00:23  3.40
-## 8         0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
-## 9         1                   JAN          NA 2017-02-28 15:05:23  3.55
-## 10        2                   FEB          NA 2017-03-30 15:00:16  3.48
+## 7         7                   JUL          NA 2017-09-28 15:08:15  3.40
+## 8         8                   AUG          NA 2017-10-30 15:00:20  3.19
+## 9         9                   SEP          NA 2017-10-30 15:00:20  3.21
+## 10        0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
 ##    CV....
 ## 1      NA
 ## 2      NA

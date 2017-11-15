@@ -1,9 +1,9 @@
 --- 
-title: "R Companion to Price Analysis"
+title: "Primer for Time Series Econometrics in R"
 author: "Mindy L. Mallory"
 description: "This book is a companion to 'Price Analysis: A Fundamental Approach to the Study of Commodity Prices'. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA."
 cover-image: "images/cover.png"
-date: "2017-09-26"
+date: "2017-11-15"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -25,7 +25,7 @@ download:
 
 
 
-This book is a companion to [Price Analysis: A Fundamental Approach to the Study of Commodity Prices](http://mindymallory.github.io/PriceAnalysis/)
+
 
 
 # About the Author {-}

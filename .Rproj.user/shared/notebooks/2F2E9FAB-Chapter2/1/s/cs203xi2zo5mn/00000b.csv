@@ -1,4 +1,0 @@
-"0","IAPrice <- read.csv('IAPrice.csv')
-"
-"2","Error in file(file, ""rt"") : cannot open the connection
-"

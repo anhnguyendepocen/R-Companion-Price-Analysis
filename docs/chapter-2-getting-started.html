@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R Companion to Price Analysis</title>
+  <title>Primer for Time Series Econometrics in R</title>
   <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:title" content="Primer for Time Series Econometrics in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
   <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  <meta name="twitter:title" content="Primer for Time Series Econometrics in R" />
   
   <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
   <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Mindy L. Mallory">
 
 
-<meta name="date" content="2017-09-26">
+<meta name="date" content="2017-11-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -156,7 +156,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Primer for Time Series Econometrics in R</a>
           </h1>
         </div>
 
@@ -222,7 +222,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When a website has an API set of for their data warehouse, it is easy to import data into a programming environment with script. This saves a lot of time navigating and clicking through websites. Since we are learning to use R for price analysis, we will definitely want to make use of API calls when we can. We will need to install another package that provides functionality to extract information from webpages. Install the <code>RCurl</code> package and load the library by running the following code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;RCurl&quot;</span>)
 <span class="kw">library</span>(RCurl)</code></pre></div>
-<pre><code>## Warning: package &#39;Quandl&#39; was built under R version 3.3.3</code></pre>
 <pre><code>## Loading required package: xts</code></pre>
 <pre><code>## Loading required package: zoo</code></pre>
 <pre><code>## 
@@ -375,9 +374,9 @@ IAPrice &lt;-<span class="st"> </span><span class="kw">read.csv</span>(IAPrice)
 ## 5          9000 UNITED STATES          IOWA 2017   MONTHLY          5
 ## 6          9000 UNITED STATES          IOWA 2017   MONTHLY          6
 ## 7          9000 UNITED STATES          IOWA 2017   MONTHLY          7
-## 8          9000 UNITED STATES          IOWA 2016    ANNUAL          0
-## 9          9000 UNITED STATES          IOWA 2016   MONTHLY          1
-## 10         9000 UNITED STATES          IOWA 2016   MONTHLY          2
+## 8          9000 UNITED STATES          IOWA 2017   MONTHLY          8
+## 9          9000 UNITED STATES          IOWA 2017   MONTHLY          9
+## 10         9000 UNITED STATES          IOWA 2016    ANNUAL          0
 ##    end_code reference_period_desc week_ending           load_time Value
 ## 1         1                   JAN          NA 2017-03-30 15:00:16  3.34
 ## 2         2                   FEB          NA 2017-04-27 15:03:23  3.39
@@ -385,10 +384,10 @@ IAPrice &lt;-<span class="st"> </span><span class="kw">read.csv</span>(IAPrice)
 ## 4         4                   APR          NA 2017-06-29 15:05:42  3.34
 ## 5         5                   MAY          NA 2017-07-31 15:00:20  3.39
 ## 6         6                   JUN          NA 2017-08-30 15:00:23  3.35
-## 7         7                   JUL          NA 2017-08-30 15:00:23  3.40
-## 8         0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
-## 9         1                   JAN          NA 2017-02-28 15:05:23  3.55
-## 10        2                   FEB          NA 2017-03-30 15:00:16  3.48
+## 7         7                   JUL          NA 2017-09-28 15:08:15  3.40
+## 8         8                   AUG          NA 2017-10-30 15:00:20  3.19
+## 9         9                   SEP          NA 2017-10-30 15:00:20  3.21
+## 10        0        MARKETING YEAR          NA 2017-02-24 15:36:05  3.35
 ##    CV....
 ## 1      NA
 ## 2      NA
@@ -409,11 +408,11 @@ IAPrice &lt;-<span class="st"> </span><span class="kw">read.csv</span>(IAPrice)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">library</span>(RCurl)
 CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
 
-<span class="kw">plot</span>(CZ2015$Dat, CZ2015$Settle)</code></pre></div>
+<span class="kw">plot</span>(CZ2015<span class="op">$</span>Dat, CZ2015<span class="op">$</span>Settle)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">library</span>(RCurl)
 CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;https://www.quandl.com/api/v1/datasets/CME/CZ2015.csv&quot;</span>)
 
-<span class="kw">plot</span>(CZ2015$Date, CZ2015$Settle)</code></pre></div>
+<span class="kw">plot</span>(CZ2015<span class="op">$</span>Date, CZ2015<span class="op">$</span>Settle)</code></pre></div>
 <p><img src="Chapter2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>This plot is OK, but it is not exactly up to par when you think about what charts in finance, for example, usually look like. The <code>quantmod</code> package has become the most popular R package for charting. Go ahead and install it an load it into your library.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantmod&quot;</span>)
@@ -422,8 +421,8 @@ CZ2015 &lt;-<span class="st"> </span><span class="kw">getURL</span>(<span class=
 <span class="kw">library</span>(xts)</code></pre></div>
 <p>Now, lets plot December 2015 wheat prices that we imported earlier. To do this we will use the function <code>chartSeries()</code> from the <code>quantmod</code> package. It expects data to be a time series, and it expects to receive Open, High, Low, Close, and Volume.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
-WZ2015_chart &lt;-<span class="st"> </span><span class="kw">subset</span>(WZ2015, <span class="dt">select=</span> -<span class="kw">c</span>(Date, Change, Last, Open.Interest))      
-WZ2015_chart &lt;-<span class="st"> </span><span class="kw">xts</span>(WZ2015_chart, <span class="dt">order.by =</span> <span class="kw">as.Date</span>(WZ2015$Date))    
+WZ2015_chart &lt;-<span class="st"> </span><span class="kw">subset</span>(WZ2015, <span class="dt">select=</span> <span class="op">-</span><span class="kw">c</span>(Date, Change, Last, Open.Interest))      
+WZ2015_chart &lt;-<span class="st"> </span><span class="kw">xts</span>(WZ2015_chart, <span class="dt">order.by =</span> <span class="kw">as.Date</span>(WZ2015<span class="op">$</span>Date))    
 <span class="kw">colnames</span>(WZ2015_chart)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;Close&quot;</span>    
 
 <span class="kw">chartSeries</span>(WZ2015_chart[<span class="st">&#39;2015-01-01/&#39;</span>], <span class="dt">type =</span> <span class="st">&quot;candlesticks&quot;</span>, <span class="dt">theme =</span> <span class="kw">chartTheme</span>(<span class="st">&quot;white&quot;</span>))</code></pre></div>
@@ -461,7 +460,7 @@ WZ2015_chart &lt;-<span class="st"> </span><span class="kw">xts</span>(WZ2015_ch
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

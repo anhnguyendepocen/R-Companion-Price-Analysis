@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R Companion to Price Analysis</title>
+  <title>Primer for Time Series Econometrics in R</title>
   <meta name="description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="R Companion to Price Analysis" />
+  <meta property="og:title" content="Primer for Time Series Econometrics in R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http:mindymallory.github.io/R-Companion-Price-Analysis/" />
   <meta property="og:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="mindymallory/R-Companion-Price-Analysis" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Companion to Price Analysis" />
+  <meta name="twitter:title" content="Primer for Time Series Econometrics in R" />
   
   <meta name="twitter:description" content="This book is a companion to ‘Price Analysis: A Fundamental Approach to the Study of Commodity Prices’. It provides a basic introduction to working with commodity price and fundamental data from sources like Yahoo Finance, Quandl, and the USDA." />
   <meta name="twitter:image" content="http:mindymallory.github.io/R-Companion-Price-Analysis/images/cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Mindy L. Mallory">
 
 
-<meta name="date" content="2017-09-26">
+<meta name="date" content="2017-11-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -156,7 +156,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Companion to Price Analysis</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Primer for Time Series Econometrics in R</a>
           </h1>
         </div>
 
@@ -211,7 +211,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The power of R, is not in the line by line execution of commands, it is in writing scripts were commands can be stored and reused. In the upper left hand corner of RStudio, is an icon just below the <em>File</em> menu. Clicking it reveals a menu to open different kinds of script templates. Click it and choose <em>R Script</em>. The R script will open in the RStudio window and now there are four panes open. Let’s assign the value <code>2</code> to a variable called <code>x</code> and the value <code>3</code> to a variable called <code>y</code>. Then we will add them together and store the result as <code>z</code>. This is done by using the characters <code>&lt;-</code> together to assign the values to the variable names. Type the following into the R script.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">2</span>
 y &lt;-<span class="st"> </span><span class="dv">3</span>
-z &lt;-<span class="st"> </span>x+y
+z &lt;-<span class="st"> </span>x<span class="op">+</span>y
 z</code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Click on the <em>Environment</em> tab in the upper right hand corner. You will see <code>x, y, and z</code> and their values. In this book, notice that output from R is preceded by ‘##’. The hashtag symbol indicates comments to R, so anything to the right of a comment will not be evaluated. This facilitates copy and pasting from this document into the R console, since only the intended input will be evaluated.</p>
@@ -221,13 +221,13 @@ z</code></pre></div>
 <div id="basic-calculations" class="section level2">
 <h2><span class="header-section-number">1.3</span> Basic Calculations</h2>
 <p>In the Console type the following to get acquainted with performing arithmetic in R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2+2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span>*<span class="dv">7</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span><span class="op">*</span><span class="dv">7</span></code></pre></div>
 <pre><code>## [1] 42</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">12</span>/<span class="dv">4</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">12</span><span class="op">/</span><span class="dv">4</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span>^<span class="dv">2</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">^</span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 1.414214</code></pre>
@@ -247,7 +247,7 @@ z</code></pre></div>
 <p>A vector is a datatype that is a sequence of elements of the same type (enumerated above).</p>
 <p>A vector of numeric elements<br />
 </p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.3</span>, <span class="dv">4</span>, <span class="dv">6</span>, -<span class="dv">10</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.3</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">10</span>)</code></pre></div>
 <p>The function, <code>c()</code> is the concatenate function. It just takes the elements between the comma’s and puts them together in one matrix.</p>
 <p>A vector of character elements<br />
 </p>
@@ -365,7 +365,7 @@ DATA</code></pre></div>
 <div id="subsetting" class="section level3">
 <h3><span class="header-section-number">1.6.1</span> Subsetting</h3>
 <p>There are many ways to slice and dice data frames. We will just introduce a couple of the most common here. First, if your data frame has column names you can subset off just one column of the data set by,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA$Weight</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DATA<span class="op">$</span>Weight</code></pre></div>
 <pre><code>## [1] 150 155 120 145 160
 ## Levels: 120 145 150 155 160</code></pre>
 <p>Alternatively, you can just specify by column number,</p>
@@ -385,7 +385,7 @@ DATA</code></pre></div>
 <div id="install-and-load-a-package-into-the-library" class="section level2">
 <h2><span class="header-section-number">1.7</span> Install and Load a Package into the Library</h2>
 <p>Base R comes with a lot of functionality for statistical analysis, but the beauty of R lies in the packages contributed by the open source community. To see what happens if you try to use a function contained in a package you have not yet installed,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(DATA$Height)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(DATA<span class="op">$</span>Height)</code></pre></div>
 <p>Anytime you get this error message you know you need to install the proper package (or you have a typo!). If you simply Google ‘R qplot’ you will find the documentation for the function, including the package it is in. Try it for <code>qplot</code>. <code>...</code> so you found it is in a package called <code>ggplot2</code>, a powerful package for creating excellent graphics. To install this package and load it into your library, there are two methods.</p>
 <ol style="list-style-type: decimal">
 <li><p>In the lower right pane of RStudio, click the Packages tab, then click Install. Now type <code>ggplot2</code> and install. Now in the package tab, find <code>ggplot2</code> in the list of installed packages, click the check box. These actions installed <code>ggplot2</code> and loaded it into the library.</p></li>
@@ -395,7 +395,7 @@ DATA</code></pre></div>
 <span class="kw">library</span>(ggplot2)</code></pre></div>
 <p>Now try the code from above.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">qplot</span>(DATA$Height)</code></pre></div>
+<span class="kw">qplot</span>(DATA<span class="op">$</span>Height)</code></pre></div>
 <p><img src="Chapter1_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Now we were able to make a frequency plot for height! It shows how many observations at each height there are in the data set.</p>
 </div>
@@ -450,7 +450,7 @@ DATA</code></pre></div>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
